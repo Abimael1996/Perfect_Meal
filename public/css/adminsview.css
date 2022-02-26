@@ -1,0 +1,34 @@
+body {
+    background-color: #89c1df;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+#topSection {
+    display: flex;
+    justify-content: space-around;
+}
+
+.card {
+    box-sizing:content-box;
+    height: fit-content;
+    background-color: #2e604f;
+}
+
+.card-body {
+    height: fit-content;
+}
+
+.list-group-item {
+    background-color: #89c1df;
+}
+
+.goal {
+    background-color: #c58c18;
+}
+
+.goalCard {
+    background-color: #844f1b;
+}
