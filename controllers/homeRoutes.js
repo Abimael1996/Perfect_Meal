@@ -1,4 +1,6 @@
 const router = require("express").Router();
+const Patient = require('../models/Patient');
+const Nutritionist = require('../models/Nutritionist');
 
 router.get("/", (req, res) => {
   res.render("homepage");
