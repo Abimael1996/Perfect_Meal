@@ -1,5 +1,5 @@
 body {
-    background-color: #89c1df;
+    background-color: white;
 }
 
 h1, h2 {
@@ -22,11 +22,13 @@ h1, h2 {
 }
 
 .list-group-item {
-    background-color: #89c1df;
+    background-color: #2e604f;
+    color: white;
 }
 
 .goal {
     background-color: #c58c18;
+    color: black;
 }
 
 .goalCard {
