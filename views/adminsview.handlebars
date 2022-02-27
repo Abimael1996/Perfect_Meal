@@ -5,54 +5,55 @@
     <h1>Abimael Monarrez</h1>
 </header>
 
-<body>
-    <main>
+<main>
 
-        <section id="topSection">
-            <div class="card text-white mb-3">
-                <div class="card-header">
-                    <h5 class="card-title">Customer Info</h5>
-                </div>
-                <div class="card-body">
-                    <div class="card">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Name: Abimael Monarrez</li>
-                            <li class="list-group-item">Age: 25</li>
-                            <li class="list-group-item">Gender: Male</li>
-                            <li class="list-group-item">Height: 6 ft</li>
-                            <li class="list-group-item">Weight: 169 lb</li>
-                        </ul>
-                    </div>
-
-                </div>
+    <section id="topSection">
+        <div class="card text-white mb-3">
+            <div class="card-header">
+                <h5 class="card-title">Customer Info</h5>
             </div>
-            <div class="card text-white goalCard mb-3">
-                <div class="card-header">
-                    <h5 class="card-title">Goals</h5>
-                </div>
-                <div class="card-body">
-                    <div class="card goalCard">
-                        <h5 class="card-title">Weight by the end of the week</h5>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item goal">169.5 lb</li>
-                        </ul>
-                        <h5 class="card-title">Macros for today</h5>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item goal">Protein: 189gr</li>
-                            <li class="list-group-item goal">Carbs: 413gr</li>
-                            <li class="list-group-item goal">Fat: 88gr</li>
-                            <li class="list-group-item goal">Sugar: less than 83gr</li>
-                            <li class="list-group-item goal">Saturated Fat: less than 35gr</li>
-                            <li class="list-group-item goal">Food Energy: 3,100cal</li>
-                        </ul>
-                    </div>
+            <div class="card-body">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Name: Abimael Monarrez</li>
+                        <li class="list-group-item">Age: 25</li>
+                        <li class="list-group-item">Gender: Male</li>
+                        <li class="list-group-item">Height: 6 ft</li>
+                        <li class="list-group-item">Weight: <span id="current-weight">169</span>lb</li>
+                        <li class="list-group-item">Maintenance Calories: <span id="maintenance-cal">2780</span></li>
 
+                    </ul>
                 </div>
+
             </div>
+        </div>
+        <div class="card text-white goalCard mb-3">
+            <div class="card-header">
+                <h5 class="card-title">Goals</h5>
+            </div>
+            <div class="card-body">
+                <div class="card goalCard">
+                    <h5 class="card-title">Weight by the end of the week</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item goal" id="goal" data-goal="gain">169.5 lb</li>
+                    </ul>
+                    <h5 class="card-title">Macros for today</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item goal">Protein: <span id="protein-goal"></span>gr</li>
+                        <li class="list-group-item goal">Carbs: <span id="carbs-goal"></span>gr</li>
+                        <li class="list-group-item goal">Fat: <span id="fat-goal"></span>gr</li>
+                        <li class="list-group-item goal">Sugar: ???</li>
+                        <li class="list-group-item goal">Saturated Fat: ???</li>
+                        <li class="list-group-item goal">Food Energy: <span id="food-energy-goal"></span>cal</li>
+                    </ul>
+                </div>
 
-        </section>
-        <section id="nutritionPlan">
-            <h2>Nutrition Plan</h2>
-        </section>
-    </main>
-</body>
+            </div>
+        </div>
+
+    </section>
+    <section id="nutritionPlan">
+        <h2>Nutrition Plan</h2>
+    </section>
+</main>
+<script src="/js/getMacros.js"></script>
