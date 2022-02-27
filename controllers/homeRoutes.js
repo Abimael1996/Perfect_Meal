@@ -1,4 +1,6 @@
 const router = require("express").Router();
+const Patient = require('../models/Patient');
+const Nutritionist = require('../models/Nutritionist');
 
 const { Patient, Nutritionist } = require("../models");
 
@@ -15,3 +17,4 @@ router.get("/client", (req, res) => {
 });
 
 module.exports = router;
+
