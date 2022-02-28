@@ -43,24 +43,14 @@ Patient.init(
             type: DataTypes.INTEGER,
             allowNull: false,
         },
+        
+        sex: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+        },
 
         date_of_birth: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-
-        nutritionist_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        
-        maintenance: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-
-        gender: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.ENUM,
             allowNull: false,
         },
 
