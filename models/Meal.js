@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Patient extends Model {}
+class Meal extends Model {}
 
-Patient.init(
+Meal.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -11,64 +11,45 @@ Patient.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        first_name: {
+
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
 
-        last_name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [8],
-            },
-        },
-
-        weight: {
+        calories: {
             type: DataTypes.DECIMAL(10, 2),
             allowNull: false,
         },
 
-        height: {
+        protein: {
             type: DataTypes.DECIMAL(10, 2),
             allowNull: false,
         },
 
-        sex: {
-            type: DataTypes.ENUM('male', 'female'),
+        fat: {
+            type: DataTypes.DECIMAL(10, 2),
             allowNull: false,
         },
 
-        date_of_birth: {
-            type: DataTypes.DATE,
+        carbs: {
+            type: DataTypes.DECIMAL(10, 2),
             allowNull: false,
         },
 
-        nutritionist_id: {
+        day_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'nutritionist',
+                model: 'day',
                 key: 'id',
             },
-        }
+        },
     },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'patient',
+        modelName: 'meal',
     }
 );
-
-module.exports = Patient;
