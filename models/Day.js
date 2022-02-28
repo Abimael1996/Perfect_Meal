@@ -33,3 +33,5 @@ Day.init(
         modelName: 'day',
     }
 );
+
+module.exports = Day;

@@ -53,3 +53,5 @@ Meal.init(
         modelName: 'meal',
     }
 );
+
+module.exports = Meal;

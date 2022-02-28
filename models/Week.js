@@ -33,3 +33,5 @@ Week.init(
         modelName: 'week',
     }
 );
+
+module.exports = Week;
