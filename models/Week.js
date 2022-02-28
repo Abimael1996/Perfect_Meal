@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Week_Days extends Model {}
+class Week extends Model {}
 
-Week_Days.init(
+Week.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -12,15 +12,15 @@ Week_Days.init(
             autoIncrement: true,
         },
 
-        day: {
+        week_number: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
 
-        week_id: {
+        plan_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'weeks',
+                model: 'meal_plans',
                 key: 'id',
             },
         },
@@ -30,6 +30,6 @@ Week_Days.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'week_days',
+        modelName: 'week',
     }
 );
