@@ -35,17 +35,17 @@ Patient.init(
         },
 
         weight: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.DECIMAL(10, 2),
             allowNull: false,
         },
 
         height: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.DECIMAL(10, 2),
             allowNull: false,
         },
 
         sex: {
-            type: DataTypes.ENUM,
+            type: DataTypes.ENUM('male', 'female'),
             allowNull: false,
         },
 
