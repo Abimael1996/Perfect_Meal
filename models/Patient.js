@@ -35,22 +35,22 @@ Patient.init(
         },
 
         weight: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.DECIMAL,
             allowNull: false,
         },
 
         height: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.DECIMAL,
             allowNull: false,
         },
-        
+
         sex: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.ENUM,
             allowNull: false,
         },
 
         date_of_birth: {
-            type: DataTypes.ENUM,
+            type: DataTypes.DATE,
             allowNull: false,
         },
 
