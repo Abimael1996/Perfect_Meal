@@ -2,37 +2,50 @@ body {
     background-color: white;
 }
 
-h1, h2, h5 {
+header {
+    display: flex;
+    justify-content: space-around;
+}
+
+h1, h2, h5, #goal {
     text-align: center;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
 }
 
 #topSection {
     display: flex;
     justify-content: space-around;
+    margin-top: 50px;
 }
 
 .card {
     box-sizing:content-box;
     height: fit-content;
-    background-color: #2e604f;
+    background-color: white;
+    min-width: 200px;
 }
 
 .card-body {
     height: fit-content;
+    min-width: 250px;
 }
 
 .list-group-item {
-    background-color: #2e604f;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 .goal {
-    background-color: #c58c18;
+    background-color: white;
     color: black;
 }
 
 .goalCard {
-    background-color: #844f1b;
+    background-color: white;
 }
 
 #nutritionPlan {
@@ -40,3 +53,4 @@ h1, h2, h5 {
     justify-content: space-around;
     margin-top: 100px;
 }
+
