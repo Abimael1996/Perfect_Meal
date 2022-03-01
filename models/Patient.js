@@ -49,6 +49,16 @@ Patient.init(
             allowNull: false,
         },
 
+        goal: {
+            type: DataTypes.ENUM('gain', 'lose', 'maintain'),
+            allowNull: false,
+        },
+        
+        age: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        
         date_of_birth: {
             type: DataTypes.DATEONLY,
             allowNull: false,
