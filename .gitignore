@@ -1,4 +1,11 @@
+#Ignoring node_modules files
 node_modules
+
+#Ignoring env file used for dotenv
 .env
+
+#Ignoring MacOS system files
 .DS_Store
+
+#Ignoring package-lock to avoid conflict between versions
 package-lock.json
