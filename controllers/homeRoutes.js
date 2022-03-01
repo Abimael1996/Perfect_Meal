@@ -12,4 +12,14 @@ router.get('/client', (req, res) => {
     res.render('adminsview');
 });
 
+//TODO: change /client/plan/ for /client/plan/:id once db tables are all set.
+router.get('/client/plan/', async (req, res) => {
+  try {
+    //TODO: Get data by plan_id 
+    res.render('nutritionplan');
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
