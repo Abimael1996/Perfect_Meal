@@ -5,6 +5,7 @@ body {
 header {
     display: flex;
     justify-content: space-around;
+    margin-top: 30px;
 }
 
 h1, h2, h5, #goal {
@@ -54,3 +55,7 @@ h1, h2, h5, #goal {
     margin-top: 100px;
 }
 
+#before, #next {
+    height: fit-content;
+    font-size: 28px;
+}
