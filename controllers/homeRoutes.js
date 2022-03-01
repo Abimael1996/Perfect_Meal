@@ -1,4 +1,8 @@
 const router = require("express").Router();
+const Patient = require('../models/Patient');
+const Nutritionist = require('../models/Nutritionist');
+
+const { Patient, Nutritionist } = require("../models");
 
 router.get("/", (req, res) => {
   res.render("homepage");
@@ -8,8 +12,8 @@ router.get("/admin", (req, res) => {
   res.render("adminpage");
 });
 
-router.get('/client', (req, res) => {
-    res.render('adminsview');
+router.get("/client", (req, res) => {
+  res.render("adminsview");
 });
 
 //TODO: change /client/plan/ for /client/plan/:id once db tables are all set.
