@@ -45,12 +45,12 @@ Patient.init(
         },
 
         sex: {
-            type: DataTypes.ENUM('male', 'female'),
+            type: DataTypes.ENUM('Male', 'Female'),
             allowNull: false,
         },
 
         goal: {
-            type: DataTypes.ENUM('gain', 'lose', 'maintain'),
+            type: DataTypes.ENUM('Gain', 'Lose', 'Maintain'),
             allowNull: false,
         },
         
