@@ -17,10 +17,10 @@ Day.init(
             allowNull: false,
         },
 
-        week_id: {
+        plan_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'week',
+                model: 'meal_plan',
                 key: 'id',
             },
         },
