@@ -2,7 +2,7 @@ body {
     background-color: white;
 }
 
-h1, h2 {
+h1, h2, h5 {
     text-align: center;
 }
 
@@ -33,4 +33,10 @@ h1, h2 {
 
 .goalCard {
     background-color: #844f1b;
+}
+
+#nutritionPlan {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 100px;
 }

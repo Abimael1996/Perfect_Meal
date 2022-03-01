@@ -2,7 +2,7 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/adminsview.css">
 <header>
-    <h1>Abimael Monarrez</h1>
+    <h1>{{first_name}} {{last_name}}</h1>
 </header>
 
 <main>
@@ -15,11 +15,10 @@
             <div class="card-body">
                 <div class="card">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Name: Abimael Monarrez</li>
-                        <li class="list-group-item">Age: 25</li>
-                        <li class="list-group-item">Gender: Male</li>
-                        <li class="list-group-item">Height: 6 ft</li>
-                        <li class="list-group-item">Weight: <span id="current-weight">169</span>lb</li>
+                        <li class="list-group-item">Age: {{age}}</li>
+                        <li class="list-group-item">Gender: {{sex}}</li>
+                        <li class="list-group-item">Height: {{height}} ft</li>
+                        <li class="list-group-item">Weight: <span id="current-weight">{{weight}}</span>lb</li>
                         <li class="list-group-item">Maintenance Calories: <span id="maintenance-cal">2780</span></li>
 
                     </ul>
@@ -33,6 +32,7 @@
             </div>
             <div class="card-body">
                 <div class="card goalCard">
+                    <h5 class="card-title">{{goal}} Weight</h5>
                     <h5 class="card-title">Weight by the end of the week</h5>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item goal" id="goal" data-goal="gain">169.5 lb</li>
@@ -42,8 +42,6 @@
                         <li class="list-group-item goal">Protein: <span id="protein-goal"></span>gr</li>
                         <li class="list-group-item goal">Carbs: <span id="carbs-goal"></span>gr</li>
                         <li class="list-group-item goal">Fat: <span id="fat-goal"></span>gr</li>
-                        <li class="list-group-item goal">Sugar: ???</li>
-                        <li class="list-group-item goal">Saturated Fat: ???</li>
                         <li class="list-group-item goal">Food Energy: <span id="food-energy-goal"></span>cal</li>
                     </ul>
                 </div>
@@ -52,8 +50,9 @@
         </div>
 
     </section>
-    <section id="nutritionPlan">
         <h2>Nutrition Plan</h2>
+    <section id="nutritionPlan">
+        <button type="button" class="btn btn-primary btn-lg">Create a Nutrition Plan</button>
     </section>
 </main>
 <script src="/js/getMacros.js"></script>
