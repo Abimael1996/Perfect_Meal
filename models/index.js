@@ -63,4 +63,4 @@ Ingredient.belongsToMany(Meal, {
 });
 
 
-module.exports = {Nutritionist, Patient};
+module.exports = {Nutritionist, Patient, Meal_Plan, Day, Meal, Day_Meal, Ingredient, Meal_Ingredient};
