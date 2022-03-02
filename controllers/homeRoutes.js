@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-const { Patient, Nutritionist, Meal_Plan, Day, Meal, Day_Meal, Ingredient, Meal_Ingredient } = require("../models");
+const { Patient, Nutritionist, Day, Meal, DayMeal, Ingredient, MealIngredient } = require("../models");
 
 router.get("/", (req, res) => {
   res.render("homepage");
@@ -26,7 +26,7 @@ router.get("/client/:id", async (req, res) => {
 });
 
 //TODO: change /client/plan/ for /client/plan/:id once db tables are all set.
-router.get('/client/plan/', async (req, res) => {
+router.get('/client/:id/plan/', async (req, res) => {
   try {
     //TODO: Get data by plan_id 
     res.render('nutritionplan');
