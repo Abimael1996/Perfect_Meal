@@ -20,17 +20,20 @@
 
   <div class="container">
     <div class="row">
+      {{#if customers.lenght}}
       <div class="col-sm-9 bg-light p-3 border">
         <h1 class="jumbotron"> Customers </h1>
-        <li>
-          Ernesto
-        </li>
-        <li>
-          Ernesto
-        </li>
-        <li>
-          Ernesto
-        </li>
+        
+        {{#each customer as |customer|}}
+        <div class="row mb-2">
+          <div class="col md-8">
+            <h2><a href="/client/"{{}}></a>          
+            </h2>
+
+          </div>
+
+        </div>
+
 
       </div>
 
@@ -66,15 +69,146 @@
           ></button>
         </div>
         <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >Close</button>
-          <button type="button" class="btn btn-primary">Create</button>
+          <form class="row g-3 needs-validation" novalidate>
+            <div class="col-md-4">
+              <label for="validationCustom01" class="form-label">First name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom01 first-name"
+                required
+              />
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="validationCustom02" class="form-label">Last name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom02 last-name"
+                required
+              />
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="validationCustom01" class="form-label">Email</label>
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom01 email"
+                required
+              />
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label
+                for="validationCustom01"
+                class="form-label"
+              >Password</label>
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom01 password"
+                required
+              />
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="validationCustom03" class="form-label">Weight</label>
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom03 weight"
+                required
+              />
+              <div class="invalid-feedback">
+                Please provide a valid Weight.
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="validationCustom01" class="form-label">Height</label>
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom01 height"
+                required
+              />
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="validationCustom01" class="form-label">Date of Birth</label>
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom01 date-of-birth"
+                required
+              />
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label for="validationCustom04" class="form-label">Gender</label>
+              <select
+                class="form-select"
+                id="validationCustom04 gender"
+                required
+              >
+                <option selected disabled value="">Choose...</option>
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid Gender.
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label for="validationCustom05" class="form-label">Age</label>
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom05 age"
+                required
+              />
+              <div class="invalid-feedback">
+                Please provide.
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="validationCustom04" class="form-label">Goal</label>
+              <select
+                class="form-select"
+                id="validationCustom04 gender"
+                required
+              >
+                <option selected disabled value="">Choose...</option>
+                <option>Gain</option>
+                <option>Loose</option>
+                <option>Mantain</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid Gender.
+              </div>
+            </div>
+            <div class="col-12">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >Close</button>
+              <button class="btn btn-primary" type="submit">Submit form</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
