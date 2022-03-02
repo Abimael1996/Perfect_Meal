@@ -15,17 +15,14 @@ Patient.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-
         last_name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-
         email: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-
         password: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -33,37 +30,30 @@ Patient.init(
                 len: [8],
             },
         },
-
         weight: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-
         height: {
+            type: DataTypes.DECIMAL(10, 2),
+            allowNull: false,
+        },
+        sex: {
+            type: DataTypes.ENUM('Male', 'Female'),
+            allowNull: false,
+        },
+        goal: {
+            type: DataTypes.ENUM('Gain', 'Lose', 'Maintain'),
+            allowNull: false,
+        },
+        age: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-
         date_of_birth: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.DATEONLY,
             allowNull: false,
         },
-
-        nutritionist_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        
-        maintenance: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-
-        gender: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-        },
-
         nutritionist_id: {
             type: DataTypes.INTEGER,
             references: {
