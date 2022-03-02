@@ -21,7 +21,7 @@ try {
         body: JSON.stringify(newMealPlan),
     });
     if(res.ok) {
-        window.location.replace(`client/${id}/plan`);
+        window.location.replace(`${id}/plan`);
     }else {
         alert("something went wrong");
     }
