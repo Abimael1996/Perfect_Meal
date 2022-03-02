@@ -11,29 +11,39 @@ html {
 body {
   width: 100%;
   min-height: 100%;
+  background: url("/images/front-image.png") no-repeat center bottom/cover;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  position: relative;
 }
 
 .img-container {
-  background: url("/images/front-image.png") no-repeat center bottom/cover;
-  height: 50vh;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
+}
+
+.noaccount {
+  padding-right: 35px;
+}
+
+.nutritionimg {
+  height: 97%;
+  border-radius: 5%;
 }
 
 .inner-container {
   text-align: center;
-  position: absolute;
+  /*position: absolute;*/
   width: 100%;
   color: black;
   height: auto;
-  margin-top: 80px;
+  margin-top: 40px;
 }
 
 h1 {
-  font-size: 7em;
+  font-size: 4em;
   font-family: "Shadows into Light", sans-serif;
+  padding-bottom: 20px;
 }
 
 h2 {
@@ -48,26 +58,6 @@ a {
   margin-top: 20px;
   font-size: 1.3em;
   font-family: "Source Sans Pro", sans-serif;
-}
-
-.btn {
-  display: inline-block;
-  width: 200px;
-  font-weight: bold;
-  padding: 10px;
-  color: black;
-  border: 4px solid #fff;
-  text-align: center;
-  outline: none;
-  text-decoration: none;
-  transition: background-color 0.3s ease-out, color 0.3s ease-out;
-}
-
-.btn:hover,
-.btn:active {
-  background-color: #fff;
-  color: #000;
-  transition: background-color 0.3s ease-in, color 0.3s ease-in;
 }
 
 .img-logo {
