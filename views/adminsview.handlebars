@@ -2,49 +2,48 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/adminsview.css">
 <header>
-    <h1>Abimael Monarrez</h1>
+    <a class="btn btn-primary" href="/client/{{before id}}" role="button" id="before"><</a>
+    <h1>{{first_name}} {{last_name}}</h1>
+    <a class="btn btn-primary" href="/client/{{next id}}" role="button" id="next">></a>
 </header>
 
 <main>
 
     <section id="topSection">
-        <div class="card text-white mb-3">
+        <div class="card text-black mb-3">
             <div class="card-header">
                 <h5 class="card-title">Customer Info</h5>
             </div>
             <div class="card-body">
                 <div class="card">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Name: Abimael Monarrez</li>
-                        <li class="list-group-item">Age: 25</li>
-                        <li class="list-group-item">Gender: Male</li>
-                        <li class="list-group-item">Height: 6 ft</li>
-                        <li class="list-group-item">Weight: <span id="current-weight">169</span>lb</li>
-                        <li class="list-group-item">Maintenance Calories: <span id="maintenance-cal">2780</span></li>
+                        <li class="list-group-item"><div class="info"><span>Age:</span><span>{{age}}</span></div></li>
+                        <li class="list-group-item"><div class="info"><span>Sex:</span><span>{{sex}}</span></div></li>
+                        <li class="list-group-item"><div class="info"><span>Height:</span><span>{{height}} ft</span></div></li>
+                        <li class="list-group-item"><div class="info"><span>Weight:</span><span><span id="current-weight">{{weight}}</span><span> lb</span></span></div></li>
+                        <li class="list-group-item"><div class="info"><span>TDDE</span><span><span id="maintenance-cal">2780</span><span> cal</span></span></div></li>
 
                     </ul>
                 </div>
 
             </div>
         </div>
-        <div class="card text-white goalCard mb-3">
+        <div class="card text-black goalCard mb-3">
             <div class="card-header">
-                <h5 class="card-title">Goals</h5>
+                <div class="info"><h5 class="card-title">Goal: </h5><h5>{{goal}} Weight</h5></div>
             </div>
             <div class="card-body">
                 <div class="card goalCard">
-                    <h5 class="card-title">Weight by the end of the week</h5>
+                    <h5 class="card-title">Week Goal</h5>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item goal" id="goal" data-goal="gain">169.5 lb</li>
                     </ul>
                     <h5 class="card-title">Macros for today</h5>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item goal">Protein: <span id="protein-goal"></span>gr</li>
-                        <li class="list-group-item goal">Carbs: <span id="carbs-goal"></span>gr</li>
-                        <li class="list-group-item goal">Fat: <span id="fat-goal"></span>gr</li>
-                        <li class="list-group-item goal">Sugar: ???</li>
-                        <li class="list-group-item goal">Saturated Fat: ???</li>
-                        <li class="list-group-item goal">Food Energy: <span id="food-energy-goal"></span>cal</li>
+                        <li class="list-group-item goal"><div class="info"><span>Protein: </span><span><span id="protein-goal"></span><span> gr</span></span></div></li>
+                        <li class="list-group-item goal"><div class="info"><span>Carbs: </span><span><span id="carbs-goal"></span><span> gr</span></span></div></li>
+                        <li class="list-group-item goal"><div class="info"><span>Fat: </span><span><span id="fat-goal"></span><span></span>  gr</span></div></li>
+                        <li class="list-group-item goal"><div class="info"><span>Food Energy: </span><span><span id="food-energy-goal"></span><span> cal</span></span></div></li>
                     </ul>
                 </div>
 
@@ -52,8 +51,9 @@
         </div>
 
     </section>
-    <section id="nutritionPlan">
         <h2>Nutrition Plan</h2>
+    <section id="nutritionPlan">
+        <button type="button" class="btn btn-primary btn-lg">Create a Nutrition Plan</button>
     </section>
 </main>
 <script src="/js/getMacros.js"></script>

@@ -10,8 +10,19 @@ router.get("/admin", (req, res) => {
   res.render("adminpage");
 });
 
-router.get("/client", (req, res) => {
-  res.render("adminsview");
+router.get("/client/:id", async (req, res) => {
+  try{
+    const clientData = await Patient.findByPk(req.params.id, {
+      attributes: {
+        exclude: ["password"],
+      },
+    });
+    const client = clientData.get({plain: true});
+    console.log(client);
+    res.render("adminsview", client);
+  }catch(err) {
+    res.status(400).json(err);
+  }
 });
 
 //TODO: change /client/plan/ for /client/plan/:id once db tables are all set.
