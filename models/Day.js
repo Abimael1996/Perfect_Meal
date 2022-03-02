@@ -11,12 +11,10 @@ Day.init(
             primaryKey: true,
             autoIncrement: true,
         },
-
         day: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-
         plan_id: {
             type: DataTypes.INTEGER,
             references: {
