@@ -3,9 +3,10 @@ const Patient = require('./Patient');
 const MealPlan = require('./MealPlan');
 const Day = require('./Day');
 const Meal = require('./Meal');
-const DayMeal = require('./DayMeal');
+const Food = require('./Food');
+const MealFood = require('./MealFood');
 const Ingredient = require('./Ingredient');
-const MealIngredient = require('./MealIngredient');
+const FoodIngredient = require('./FoodIngredient');
 
 Nutritionist.hasMany(Patient, {
     foreignKey: 'nutritionist_id',
@@ -34,33 +35,42 @@ Day.belongsTo(MealPlan, {
     foreignKey: 'plan_id',
 });
 
-Day.belongsToMany(Meal, {
+Day.hasMany(Meal, {
+    foreignKey: "day_id",
+    onDelete: "CASCADE"
+});
+
+Meal.belongsTo(Day, {
+    foreignKey: "day_id",
+});
+
+Meal.belongsToMany(Food, {
     through: {
-        model: DayMeal,
+        model: MealFood,
         unique: false
     }
 });
 
-Meal.belongsToMany(Day, {
+Food.belongsToMany(Meal, {
     through: {
-        model: DayMeal,
+        model: MealFood,
         unique: false
     }
 });
 
-Meal.belongsToMany(Ingredient, {
+Food.belongsToMany(Ingredient, {
     through: {
-        model: MealIngredient,
+        model: FoodIngredient,
         unique: false
     }
 });
 
-Ingredient.belongsToMany(Meal, {
+Ingredient.belongsToMany(Food, {
     through: {
-        model: MealIngredient,
+        model: FoodIngredient,
         unique: false
     }
 });
 
 
-module.exports = {Nutritionist, Patient, MealPlan, Day, Meal, DayMeal, Ingredient, MealIngredient};
+module.exports = {Nutritionist, Patient, MealPlan, Day, Meal, Food, MealFood, Ingredient, FoodIngredient};

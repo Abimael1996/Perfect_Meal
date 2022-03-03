@@ -11,9 +11,16 @@ Meal.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        name: {
-            type: DataTypes.STRING,
+        meal: {
+            type: DataTypes.INTEGER,
             allowNull: false,
+        },
+        day_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'day',
+                key: 'id',
+            },
         },
     },
     {
