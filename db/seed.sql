@@ -17,13 +17,13 @@ INSERT INTO day (name, plan_id)
 VALUES ("Monday", 1), ("Tuesday", 1), ("Wednesday", 1), ("Thursday", 1), ("Friday", 1), ("Saturday", 1), ("Sunday", 1);
 
 INSERT INTO meal (meal, day_id)
-VALUES (1, 1), (2, 1), (4, 5);
+VALUES (1, 1), (2, 1), (4, 5), (1, 1), (5, 1);
 
 INSERT INTO food (name)
 VALUES ("Banana Shake"), ("Strawberry Shake"), ("Vanilla Shake"), ("Chocolate Shake"), ("Mango Shake"), ("Blueberry Shake"), ("Oatmeal Shake"), ("Hamburger"), ("Salad"), ("Water");
 
 INSERT INTO meal_food (meal_id, food_id)
-VALUES (1, 1), (2, 3), (3, 5);
+VALUES (1, 1), (2, 3), (3, 5), (4, 2), (5, 8);
 
 INSERT INTO ingredient (name)
 VALUES ("Bannana"), ("Strawberry"), ("Vanilla"), ("Chocolate"), ("Mango"), ("Blueberry"), ("Oatmeal"), ("Milk");
