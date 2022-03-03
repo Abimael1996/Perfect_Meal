@@ -1,22 +1,17 @@
-<link rel="stylesheet"
-      type="text/css"
-      href="/css/nutritionplan.css">
+<link rel="stylesheet" type="text/css" href="/css/nutritionplan.css">
 
 <body>
     <main>
         <div class="text-center">
             <ul class="pagination justify-content-center">
                 <li class="page-item disabled">
-                    <a class="page-link"
-                       href="#"
-                       tabindex="-1">Previous</a>
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
                 </li>
                 <li class="page-item">
-                    <p>Week 1</p>
+                    <p>{{name}}</p>
                 </li>
                 <li class="page-item">
-                    <a class="page-link"
-                       href="#">Next</a>
+                    <a class="page-link" href="#">Next</a>
                 </li>
             </ul>
         </div>
@@ -24,126 +19,178 @@
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr class="row100 head">
-                        <th class="column100 column1"
-                            data-column="column1"></th>
-                        <th class="column100 column2"
-                            data-column="column2">Monday</th>
-                        <th class="column100 column3"
-                            data-column="column3">Tuesday</th>
-                        <th class="column100 column4"
-                            data-column="column4">Wednesday</th>
-                        <th class="column100 column5"
-                            data-column="column5">Thursday</th>
-                        <th class="column100 column6"
-                            data-column="column6">Friday</th>
-                        <th class="column100 column7"
-                            data-column="column7">Saturday</th>
-                        <th class="column100 column8"
-                            data-column="column8">Sunday</th>
+                        <th class="column100 column1" data-column="column1"></th>
+                        <th class="column100 column2" data-column="column2">Monday</th>
+                        <th class="column100 column3" data-column="column3">Tuesday</th>
+                        <th class="column100 column4" data-column="column4">Wednesday</th>
+                        <th class="column100 column5" data-column="column5">Thursday</th>
+                        <th class="column100 column6" data-column="column6">Friday</th>
+                        <th class="column100 column7" data-column="column7">Saturday</th>
+                        <th class="column100 column8" data-column="column8">Sunday</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="row100">
-                        <td class="column100 column1"
-                            data-column="column1">Meal 1</td>
-                        <td class="column100 column2"
-                            data-column="column2">
-                            {{#if meal_id}}
-                            <div class="card" data-id="{{meal_id}}">{{name}}</div>
-                            {{else}}
-                            <a href=""
-                               class="btn btn-default btn-rounded mb-4"
-                               data-toggle="modal"
-                               data-target="#modalLoginForm">Add Meal</a>
-                            {{/if}}
+                    <tr class="row100" id="1">
+                        <td class="column100 column1" data-column="column1">Meal 1</td>
+                        <td class="column100 column2 cell" data-column="column2" data-day="Monday" data-meal="1">
+                            {{> meal-name}}
+
                         </td>
-                        <td class="column100 column3"
-                            data-column="column3"></td>
-                        <td class="column100 column4"
-                            data-column="column4"></td>
-                        <td class="column100 column5"
-                            data-column="column5"></td>
-                        <td class="column100 column6"
-                            data-column="column6"></td>
-                        <td class="column100 column7"
-                            data-column="column7"></td>
-                        <td class="column100 column8"
-                            data-column="column8"></td>
+                        <td class="column100 column3 cell" data-column="column3" data-day="Tuesday" data-meal="1">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column4 cell" data-column="column4" data-day="Wednesday" data-meal="1">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column5 cell" data-column="column5" data-day="Thursday" data-meal="1">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column6 cell" data-column="column6" data-day="Friday" data-meal="1">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column7 cell" data-column="column7" data-day="Saturday" data-meal="1">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column8 cell" data-column="column8" data-day="Sunday" data-meal="1">
+                            {{> meal-name}}
+
+                        </td>
                     </tr>
-                    <tr class="row100">
-                        <td class="column100 column1"
-                            data-column="column1">Snack</td>
-                        <td class="column100 column2"
-                            data-column="column2"></td>
-                        <td class="column100 column3"
-                            data-column="column3"></td>
-                        <td class="column100 column4"
-                            data-column="column4"></td>
-                        <td class="column100 column5"
-                            data-column="column5"></td>
-                        <td class="column100 column6"
-                            data-column="column6"></td>
-                        <td class="column100 column7"
-                            data-column="column7"></td>
-                        <td class="column100 column8"
-                            data-column="column8"></td>
+                    <tr class="row100" id="2">
+                        <td class="column100 column1" data-column="column1">Snack</td>
+                        <td class="column100 column2 cell" data-column="column2" data-day="Monday" data-meal="2">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column3 cell" data-column="column3" data-day="Tuesday" data-meal="2">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column4 cell" data-column="column4" data-day="Wednesday" data-meal="2">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column5 cell" data-column="column5" data-day="Thursday" data-meal="2">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column6 cell" data-column="column6" data-day="Friday" data-meal="2">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column7 cell" data-column="column7" data-day="Saturday" data-meal="2">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column8 cell" data-column="column8" data-day="Sunday" data-meal="2">
+                            {{> meal-name}}
+
+                        </td>
                     </tr>
-                    <tr class="row100">
-                        <td class="column100 column1"
-                            data-column="column1">Meal 2</td>
-                        <td class="column100 column2"
-                            data-column="column2"></td>
-                        <td class="column100 column3"
-                            data-column="column3"></td>
-                        <td class="column100 column4"
-                            data-column="column4"></td>
-                        <td class="column100 column5"
-                            data-column="column5"></td>
-                        <td class="column100 column6"
-                            data-column="column6"></td>
-                        <td class="column100 column7"
-                            data-column="column7"></td>
-                        <td class="column100 column8"
-                            data-column="column8"></td>
+                    <tr class="row100" id="3">
+                        <td class="column100 column1" data-column="column1">Meal 2</td>
+                        <td class="column100 column2 cell" data-column="column2" data-day="Monday" data-meal="3">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column3 cell" data-column="column3" data-day="Tuesday" data-meal="3">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column4 cell" data-column="column4" data-day="Wednesday" data-meal="3">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column5 cell" data-column="column5" data-day="Thursday" data-meal="3">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column6 cell" data-column="column6" data-day="Friday" data-meal="3">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column7 cell" data-column="column7" data-day="Saturday" data-meal="3">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column8 cell" data-column="column8" data-day="Sunday" data-meal="3">
+                            {{> meal-name}}
+
+                        </td>
                     </tr>
-                    <tr class="row100">
-                        <td class="column100 column1"
-                            data-column="column1">Snack</td>
-                        <td class="column100 column2"
-                            data-column="column2">--</td>
-                        <td class="column100 column3"
-                            data-column="column3">5:00 PM</td>
-                        <td class="column100 column4"
-                            data-column="column4">5:00 PM</td>
-                        <td class="column100 column5"
-                            data-column="column5">--</td>
-                        <td class="column100 column6"
-                            data-column="column6">9:00 AM</td>
-                        <td class="column100 column7"
-                            data-column="column7">--</td>
-                        <td class="column100 column8"
-                            data-column="column8">--</td>
+                    <tr class="row100" id="4">
+                        <td class="column100 column1" data-column="column1">Snack</td>
+                        <td class="column100 column2 cell" data-column="column2" data-day="Monday" data-meal="4">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column3 cell" data-column="column3" data-day="Tuesday" data-meal="4">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column4 cell" data-column="column4" data-day="Wednesday" data-meal="4">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column5 cell" data-column="column5" data-day="Thursday" data-meal="4">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column6 cell" data-column="column6" data-day="Friday" data-meal="4">
+                            {{> meal-name}}
+
+
+                        </td>
+                        <td class="column100 column7 cell" data-column="column7" data-day="Saturday" data-meal="4">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column8 cell" data-column="column8" data-day="Sunday" data-meal="4">
+                            {{> meal-name}}
+
+                        </td>
                     </tr>
-                    <tr class="row100">
-                        <td class="column100 column1"
-                            data-column="column1">Meal 3</td>
-                        <td class="column100 column2"
-                            data-column="column2">8:00 AM</td>
-                        <td class="column100 column3"
-                            data-column="column3">--</td>
-                        <td class="column100 column4"
-                            data-column="column4">--</td>
-                        <td class="column100 column5"
-                            data-column="column5">8:00 AM</td>
-                        <td class="column100 column6"
-                            data-column="column6">--</td>
-                        <td class="column100 column7"
-                            data-column="column7">5:00 PM</td>
-                        <td class="column100 column8"
-                            data-column="column8">8:00 AM</td>
+                    <tr class="row100" id="5">
+                        <td class="column100 column1" data-column="column1">Meal 3</td>
+
+                        </td>
+                        <td class="column100 column2 cell" data-column="column2" data-day="Monday" data-meal="5">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column3 cell" data-column="column3" data-day="Tuesday" data-meal="5">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column4 cell" data-column="column4" data-day="Wednesday" data-meal="5">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column5 cell" data-column="column5" data-day="Thursday" data-meal="5">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column6 cell" data-column="column6" data-day="Friday" data-meal="5">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column7 cell" data-column="column7" data-day="Saturday" data-meal="5">
+                            {{> meal-name}}
+
+                        </td>
+                        <td class="column100 column8 cell" data-column="column8" data-day="Sunday" data-meal="5">
+                            {{> meal-name}}
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </main>
+    <script src="/js/renderMeals.js"></script>
+
 </body>

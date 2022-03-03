@@ -1,0 +1,11 @@
+{{#each days as |day|}}
+<div class="divDay" data-day="{{day.name}}">
+    {{#each day.meals as |meal|}}
+    <div class="divMeal" data-meal="{{meal.meal}}">
+        {{#each meal.food as |food|}}
+        <p class="foodName" data-name="{{food.name}}"></p>
+        {{/each}}
+    </div>
+    {{/each}}
+</div>
+{{/each}}
