@@ -25,7 +25,6 @@ router.get("/client/:id", async (req, res) => {
   }
 });
 
-//TODO: change /client/plan/ for /client/plan/:id once db tables are all set.
 router.get('/client/:id/plan', async (req, res) => {
   try {
     //TODO: Get data by plan_id
@@ -48,14 +47,6 @@ router.get('/client/:id/plan', async (req, res) => {
 
     const plan = planData.get({ plain: true });
 
-    //DELETE CONSOLE LOGS
-    console.log(plan);
-    console.log(plan.days);
-    console.log(plan.days[0].meals);
-
-    console.log(plan.days[0].meals[0].ingredients);
-
-    //res.status(200).json(plan);
     res.render('nutritionplan', plan);
   } catch (err) {
     res.status(500).json(err);
