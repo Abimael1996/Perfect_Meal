@@ -1,9 +1,9 @@
 const createPlanBtn = document.querySelector("#create-plan");
 const planName = createPlanBtn.getAttribute("data-name");
 const id = createPlanBtn.getAttribute("data-id");
-console.log(createPlanBtn);
-console.log(planName);
-console.log(id);
+//console.log(createPlanBtn);
+//console.log(planName);
+//console.log(id);
 
 const postPlan = async (e) => {
     e.preventDefault();

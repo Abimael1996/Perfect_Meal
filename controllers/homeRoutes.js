@@ -66,7 +66,7 @@ router.get("/client/:id", async (req, res) => {
     });
     const client = clientData.get({ plain: true });
     console.log(client);
-    res.render("adminsview", {
+    res.render("clientpage", {
       ...client,
       logged_in: req.session.logged_in,
     });
