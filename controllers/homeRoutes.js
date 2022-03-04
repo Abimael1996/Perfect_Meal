@@ -27,7 +27,6 @@ router.get("/client/:id", async (req, res) => {
 
 router.get('/client/:id/plan', async (req, res) => {
   try {
-    //TODO: Get data by plan_id
     const planData = await MealPlan.findOne({
       include: [
         {
