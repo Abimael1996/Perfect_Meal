@@ -8,22 +8,36 @@ module.exports = {
     times: (number, options) => {
         var ret = "";
 
-        for (var i = 0, j = number; i < j; i++) {
+        for (var i = 1, j = number; i < j; i++) {
             ret = ret + options.fn(i);
         }
 
         return ret;
     },
-    isEqual: (option1, option2, options) => {
-        console.log(option1)
-        console.log(option2)
-        if (option1 === option2) {
-            return options.fn(this);
+    setVar: (varName, varValue, options) => {
+        options.data.root[varName] = varValue;
+
+    },
+    hasMeals: (mealPlan, day, mealTime, options) => {
+        if(mealPlan.days.length === 0) return options.inverse(this);
+
+        const indexDay = mealPlan.days.findIndex(element => element.day == day);
+        let render = [];
+        const meals = mealPlan.days[indexDay].meals;
+
+        if (meals.length > 0) {
+            const mealIndex = meals.findIndex(element => element.meal_time == mealTime);
+            if (mealIndex != -1) {
+                const foods = meals[mealIndex].food;
+                for (const food of foods) {
+                    render.push('<div>' + food.name + '</div>');
+                }
+                return render.join('');
+            } else {
+                return options.inverse(this);
+            }
         } else {
             return options.inverse(this);
         }
-    },
-    setVar: (varName, varValue, options) => {
-        options.data.root[varName] = varValue;
     }
 };

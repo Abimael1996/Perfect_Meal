@@ -11,8 +11,8 @@ Day.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        name: {
-            type: DataTypes.ENUM("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"),
+        day: {
+            type: DataTypes.ENUM('1','2','3','4','5','6','7'),
             allowNull: false,
         },
         plan_id: {

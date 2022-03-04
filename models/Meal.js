@@ -11,8 +11,8 @@ Meal.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        meal: {
-            type: DataTypes.INTEGER,
+        meal_time: {
+            type: DataTypes.ENUM('1','2','3','4','5'),
             allowNull: false,
         },
         day_id: {
