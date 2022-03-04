@@ -15,25 +15,6 @@ router.get("/", (req, res) => {
   res.render("homepage");
 });
 
-router.get("/admin/:id", withAuth, async (req, res) => {
-  try {
-    const patientsData = await Patient.findAll({
-      attributes: {
-        exclude: ["password"],
-      },
-    });
-    const patients = patientsData.map((patient) =>
-      patient.get({ plain: true })
-    );
-    console.log(patients);
-    res.render("adminpage", {
-      patients,
-    });
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
 router.get("/admin", withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
@@ -41,11 +22,25 @@ router.get("/admin", withAuth, async (req, res) => {
     const userData = await Nutritionist.findByPk(req.session.user_id, {
       attributes: { exclude: ["last_name", "first_name"] },
     });
+    const patientsData = await Patient.findAll({
+      where: {
+        nutritionist_id: req.session.user_id,
+      },
+      attributes: {
+        exclude: ["password"],
+      },
+    });
 
     const user = userData.get({ plain: true });
+    console.log(user);
+    const patients = patientsData.map((patient) =>
+      patient.get({ plain: true })
+    );
+    console.log(patients);
 
     res.render("adminpage", {
       ...user,
+      patients,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
