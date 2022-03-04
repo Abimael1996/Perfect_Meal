@@ -1,10 +1,3 @@
-var myModal = document.getElementById("myModal");
-var myInput = document.getElementById("myInput");
-
-myModal.addEventListener("shown.bs.modal", function () {
-  myInput.focus();
-});
-
 newFunction();
 function newFunction() {
   (function () {
@@ -33,16 +26,24 @@ function newFunction() {
 const newFormHandler = async (event) => {
   event.preventDefault();
 
-  const firstName = document.querySelector("#first-name").value.trim();
-  const lastName = document.querySelector("#last-name").value.trim();
-  const email = document.querySelector("#email").value.trim();
-  const password = document.querySelector("#password").value.trim();
-  const weight = document.querySelector("#weight").value.trim();
-  const height = document.querySelector("#height").value.trim();
-  const dateOfBirth = document.querySelector("#date-of-birth").value.trim();
-  const gender = document.querySelector("#Gender").value.trim();
-  const age = document.querySelector("#Age").value.trim();
-
+  const firstName = document.querySelector("#first-name").value;
+  console.log(firstName);
+  const lastName = document.querySelector("#last-name").value;
+  console.log(lastName);
+  const email = document.querySelector("#email").value;
+  console.log(email);
+  const password = document.querySelector("#password").value;
+  console.log(password);
+  const weight = document.querySelector("#weight").value;
+  console.log(weight);
+  const height = document.querySelector("#height").value;
+  console.log(height);
+  const gender = document.querySelector("#Gender").value;
+  console.log(gender);
+  const age = document.querySelector("#Age").value;
+  console.log(age);
+  const goal = document.querySelector("#goal").value;
+  console.log(goal);
   if (
     firstName &&
     lastName &&
@@ -50,21 +51,22 @@ const newFormHandler = async (event) => {
     password &&
     weight &&
     height &&
-    dateOfBirth &&
-    gender & age
+    gender &&
+    age &&
+    goal
   ) {
     const response = await fetch(`/api/customers`, {
       method: "POST",
       body: JSON.stringify({
-        firstName,
-        lastName,
+        first_name: firstName,
+        last_name: lastName,
         email,
         password,
         weight,
         height,
-        dateOfBirth,
-        gender,
+        sex: gender,
         age,
+        goal,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -72,7 +74,7 @@ const newFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("/admin");
+      document.location.reload();
     } else {
       alert("Fail to add Customer");
     }
@@ -83,7 +85,7 @@ const delButtonHandler = async (event) => {
   if (event.target.hasAttribute("data-id"));
   const id = event.target.getAttribute("data-id");
 
-  const response = await fetch(`/api/customers/${id}`, {
+  const response = await fetch(`/api/customer/${id}`, {
     method: "DELETE",
   });
 
@@ -95,9 +97,11 @@ const delButtonHandler = async (event) => {
 };
 
 document
-  .querySelector(".new.customer-form")
+  .querySelector("#new-customer-form")
   .addEventListener("submit", newFormHandler);
 
-document
-  .querySelector(".customer-list")
-  .addEventListener("click", delButtonHandler);
+const deletButtons = document.querySelectorAll(".customer-list");
+for (const button of deletButtons) {
+  button.addEventListener("click", delButtonHandler);
+}
+console.log(deletButtons);
