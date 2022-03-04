@@ -1,41 +1,6 @@
 //const days = document.querySelectorAll(".divDay");
 const foodName = document.querySelectorAll(".foodName");
 
-//console.log(days);
-//console.log(meals);
-//console.log(foodName);
-
-let loop = 0;
-let loop2 = 0;
-const forLoop = () => {
-    for (const day of days) {
-        loop++
-        console.log("loop " + loop);
-        const meals = document.querySelectorAll(".divMeal");
-        console.log(meals);
-        for (const meal of meals) {
-            loop2++
-            console.log("loop2 " + loop2);
-            console.log(meal.getAttribute("data-meal") === meal.parentElement.parentElement.getAttribute("data-meal"));
-            console.log(meal.parentElement.parentElement.getAttribute("data-day") === meal.parentElement.getAttribute("data-day"));
-            if (meal.getAttribute("data-meal") === meal.parentElement.parentElement.getAttribute("data-meal")
-                && meal.parentElement.parentElement.getAttribute("data-day") === meal.parentElement.getAttribute("data-day")) {
-                for (const name of meal.children) {
-                    console.log(name.getAttribute("data-name"));
-                    name.textContent = name.getAttribute("data-name");
-                }
-            } else {
-                meal.parentElement.remove();
-                break;
-            }
-
-        }
-    }
-};
-
-
-
-
 for(const food of foodName) {
     const parent = food.parentElement;
     const grandParent = food.parentElement.parentElement;
