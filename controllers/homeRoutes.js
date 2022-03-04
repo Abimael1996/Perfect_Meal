@@ -19,7 +19,7 @@ router.get("/client/:id", async (req, res) => {
     });
     const client = clientData.get({plain: true});
     console.log(client);
-    res.render("adminsview", client);
+    res.render("clientpage", client);
   }catch(err) {
     res.status(400).json(err);
   }
