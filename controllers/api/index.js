@@ -1,8 +1,12 @@
-const router = require('express').Router();
+const router = require("express").Router();
 
-const planRoutes = require('./planRoutes');
+//Defined the variables to each route.
+const planRoutes = require("./planRoutes");
+const userRoutes = require("./userRoutes");
+const clientRuote = require("./clientroute");
 
-router.use('/plan', planRoutes);
+router.use("/users", userRoutes);
+router.use("/plan", planRoutes);
+router.use("/client", clientRuote);
 
 module.exports = router;
-
