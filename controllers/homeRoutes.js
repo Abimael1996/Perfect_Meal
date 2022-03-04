@@ -66,8 +66,18 @@ router.get("/client/:id", async (req, res) => {
     });
     const client = clientData.get({ plain: true });
     console.log(client);
+
+    const clientsData = await Patient.findAll({
+      where: {
+        nutritionist_id: req.session.user_id,
+      }
+    });
+    const clients = clientsData.map((client) => client.get({plain: true}));
+    console.log(clients);
+
     res.render("clientpage", {
       ...client,
+      clients,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
