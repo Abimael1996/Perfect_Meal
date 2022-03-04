@@ -8,6 +8,23 @@ router.get("/", (req, res) => {
   res.render("homepage");
 });
 
+router.get("/admin", async (req, res) => {
+  try {
+    const patientsData = await Patient.findAll({
+      attributes: {
+        exclude: ["password"],
+      },
+    });
+    const patients = patientsData.map((patient) =>
+      patient.get({ plain: true })
+    );
+    console.log(patients);
+    res.render("adminpage", {
+      patients,
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
 
 router.get('/admin', withAuth, async (req, res) => {
   try {
@@ -33,13 +50,13 @@ router.get("/signup", (req, res) => {
 });
 
 router.get("/client/:id", async (req, res) => {
-  try{
+  try {
     const clientData = await Patient.findByPk(req.params.id, {
       attributes: {
         exclude: ["password"],
       },
     });
-    const client = clientData.get({plain: true});
+    const client = clientData.get({ plain: true });
     console.log(client);
     res.render("adminsview", {
       ...client,
