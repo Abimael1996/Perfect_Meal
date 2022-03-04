@@ -17,9 +17,9 @@ const proteinGoal = document.querySelector("#protein-goal");
 const carbsGoal = document.querySelector("#carbs-goal");
 
 if(weightGoal === "Gain") {
-    weekGoal.textContent = +currentWeight + 0.5;
+    weekGoal.textContent = +currentWeight + 1;
 }else if (weightGoal === "Lose") {
-    weekGoal.textContent = +currentWeight - 0.5;
+    weekGoal.textContent = +currentWeight - 1;
 }else {
     weekGoal.textContent = currentWeight;
 }
