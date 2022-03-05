@@ -47,6 +47,9 @@ router.get("/signup", (req, res) => {
 router.get("/client/:id", withAuth, async (req, res) => {
   try {
     const clientData = await Patient.findByPk(req.params.id, {
+      include: [{
+        model: MealPlan
+      }],
       attributes: {
         exclude: ["password"],
       },
@@ -75,6 +78,9 @@ router.get("/client/:id", withAuth, async (req, res) => {
 router.get('/client/:id/plan', withAuth, async (req, res) => {
   try {
     const planData = await MealPlan.findOne({
+      where: {
+        patient_id: req.params.id,
+      },
       include: [
         {
           model: Day,
