@@ -45,7 +45,7 @@ Patient.init(
       allowNull: false,
     },
     goal: {
-      type: DataTypes.ENUM("Gain", "Lose", "Maintain"),
+      type: DataTypes.ENUM("Gain", "Lose", "Mantein"),
       allowNull: false,
     },
     age: {
