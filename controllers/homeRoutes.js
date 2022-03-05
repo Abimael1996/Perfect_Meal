@@ -44,7 +44,7 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-router.get("/client/:id", async (req, res) => {
+router.get("/client/:id", withAuth, async (req, res) => {
   try {
     const clientData = await Patient.findByPk(req.params.id, {
       attributes: {
@@ -56,7 +56,7 @@ router.get("/client/:id", async (req, res) => {
 
     const clientsData = await Patient.findAll({
       where: {
-        nutritionist_id: 1,
+        nutritionist_id: req.session.user_id,
       }
     });
     const clients = clientsData.map((client) => client.get({plain: true}));
@@ -72,7 +72,7 @@ router.get("/client/:id", async (req, res) => {
   }
 });
 
-router.get('/client/:id/plan', async (req, res) => {
+router.get('/client/:id/plan', withAuth, async (req, res) => {
   try {
     const planData = await MealPlan.findOne({
       include: [

@@ -1,23 +1,23 @@
-{{setVar 'mealPlan' this}}
-{{#times 6}} {{!-- meals time --}}
-{{setVar 'mealOfDay' this}}
-<tr class="row100"
-    data-mealTime="{{this}}">
-    <td class="column100 column1"
-        data-column="column1">Meal {{@root.mealOfDay}}</td>
-    {{#times 8}} {{!-- week days --}}
-    {{setVar 'day' this}}
-    <td class="column100 column2"
-        data-day="{{this}}"
-        data-column="column2">
-        {{!-- {{#hasMeals @root.mealPlan @root.day @root.mealOfDay}}
-        {{else}}
-        <a href=""
-           class="btn btn-success btn-rounded add-meal-btn"
-           data-toggle="modal"
-           data-target="#modalMeal">Add Meal</a>
-        {{/hasMeals}} --}}
-    </td>
+{{setVar "mealPlan" this}}
+{{#times 6}}
+  {{! meals time }}
+  {{setVar "mealOfDay" this}}
+  <tr class="row100" id="meal-{{this}}">
+    <td class="column100 column1" data-column="column1">Meal
+      {{@root.mealOfDay}}</td>
+    {{#times 8}}
+      {{! week days }}
+      {{setVar "day" this}}
+      <td class="column100 column2" id="day-{{this}}" data-column="column2">
+        {{#hasMeals @root.mealPlan @root.day @root.mealOfDay}}{{else}}
+          <a
+            href=""
+            class="btn new-button btn-rounded add-meal-btn"
+            data-toggle="modal"
+            data-target="#modalMeal"
+          >Add Meal</a>
+        {{/hasMeals}}
+      </td>
     {{/times}}
-</tr>
+  </tr>
 {{/times}}
