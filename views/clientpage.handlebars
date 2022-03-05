@@ -11,7 +11,15 @@
     <section id="topSection">
         <div class="card text-black mb-3">
             <div class="card-header">
-                <h5 class="card-title">Customer Info</h5>
+                <h5 class="card-title">Client Info</h5>
+                        <button
+    type="button"
+    class="btn btn-primary new-button"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+  >
+    Update
+  </button>
             </div>
             <div class="card-body">
                 <div class="card">
@@ -49,12 +57,165 @@
 
             </div>
         </div>
-
     </section>
         <h2>Nutrition Plan</h2>
     <section id="nutritionPlan">
         <button type="button" class="btn btn-primary btn-lg" id="create-plan" data-id="{{id}}" data-name="{{first_name}}">Create a Nutrition Plan</button>
     </section>
+
+    <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Client Info</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form class="row g-3 needs-validation" id="update-client" data-id="{{id}}" novalidate>
+            <div class="col-md-4">
+              <label for="first-name" class="form-label">First name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="first-name"
+                value="{{first_name}}"
+                required
+              />
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="last-name" class="form-label">Last name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="last-name"
+                value="{{last_name}}"
+
+                required
+              />
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="weight" class="form-label">Weight</label>
+              <input
+                type="text"
+                class="form-control"
+                id="weight"
+                value="{{weight}}"
+                required
+              />
+              <div class="invalid-feedback">
+                Please provide a valid Weight.
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="height" class="form-label">Height</label>
+              <input
+                type="text"
+                class="form-control"
+                id="height"
+                value="{{height}}"
+                required
+              />
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label for="gender" class="form-label">Sex</label>
+              <select
+                class="form-select"
+                id="gender"
+                required
+              >
+                <option selected>{{sex}}</option>
+                <option>{{oppositeSex sex}}</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid Gender.
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label for="newAge" class="form-label">Age</label>
+              <input
+                type="numbers"
+                class="form-control"
+                id="newAge"
+                value="{{age}}"
+                required
+              />
+              <div class="invalid-feedback">
+                Please provide.
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="newGoal" class="form-label">Goal</label>
+              <select
+                class="form-select"
+                id="newGoal"
+                value="{{goal}}"
+                required
+              >
+                <option selected>{{goal}}</option>
+                <option>{{newGoalA goal}}</option>
+                <option>{{newGoalB goal}}</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid Gender.
+              </div>
+            </div>
+                        <div class="col-md-4">
+              <label for="newActivity" class="form-label">Activity</label>
+              <select
+                class="form-select"
+                id="newActivity"
+                required
+              >
+                <option selected>{{activity}}</option>
+                <option>{{newActivityA activity}}</option>
+                <option>{{newActivityB activity}}</option>
+                <option>{{newActivityC activity}}</option>
+                <option>{{newActivityD activity}}</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid Activity.
+              </div>
+            </div>
+            <div class="col-12">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >Close</button>
+              <button class="btn btn-primary" type="submit">Update Customer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </main>
 <script src="/js/getMacros.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+  crossorigin="anonymous"
+></script>
+<script src="/js/editClient.js"></script>
 <script src="/js/createMealPlan.js"></script>
