@@ -1,14 +1,14 @@
 INSERT INTO nutritionist (first_name, last_name, email, password) 
 VALUES ("Valeria", "Villaseñor", "valevilla@gmail.com", "valerita1234");
 
-INSERT INTO patient (first_name, last_name, email, password, weight, height, sex, goal, age, activity, nutritionist_id) 
-VALUES ("Abimael", "Monarrez", "abimaelmona@gmail.com", "abi123455", "169", "6.0", "Male", "Gain", "25", "Moderate", "1");
+INSERT INTO patient (first_name, last_name, weight, height, sex, goal, age, activity, nutritionist_id) 
+VALUES ("Abimael", "Monarrez", "169", "6.0", "Male", "Gain", "25", "Moderate", "1");
 
-INSERT INTO patient (first_name, last_name, email, password, weight, height, sex, goal, age, activity, nutritionist_id) 
-VALUES ("Roman", "Beltran", "roman23@gmail.com", "roman123455", "190", "5.10", "Male", "Lose", "23", "Sedentary", "1");
+INSERT INTO patient (first_name, last_name, weight, height, sex, goal, age, activity, nutritionist_id) 
+VALUES ("Roman", "Beltran", "190", "5.10", "Male", "Lose", "23", "Sedentary", "1");
 
-INSERT INTO patient (first_name, last_name, email, password, weight, height, sex, goal, age, date_of_birth, nutritionist_id) 
-VALUES ("Julia", "Osuna", "julia@gmail.com", "julia1898i9", "143", "5.06", "female", "lose", "19", "2000-03-08", "1");
+INSERT INTO patient (first_name, last_name, weight, height, sex, goal, age, nutritionist_id) 
+VALUES ("Julia", "Osuna", "143", "5.06", "female", "lose", "19", "1");
 
 INSERT INTO meal_plan (name, patient_id)
 VALUES ("Abi's Plan", 1);
