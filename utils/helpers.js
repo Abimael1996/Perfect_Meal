@@ -1,10 +1,10 @@
 module.exports = {
     next: (clients, id) => {
-        for(const client of clients) {
+        for (const client of clients) {
             if (client.id === id) {
-                if(id != clients[clients.length - 1].id){
+                if (id != clients[clients.length - 1].id) {
                     return clients[clients.indexOf(client) + 1].id
-                }else{
+                } else {
                     return clients[0].id;
                 }
             }
@@ -12,11 +12,11 @@ module.exports = {
     },
 
     before: (clients, id) => {
-        for(const client of clients) {
+        for (const client of clients) {
             if (client.id === id) {
-                if(id != clients[0].id){
+                if (id != clients[0].id) {
                     return clients[clients.indexOf(client) - 1].id
-                }else{
+                } else {
                     return clients[clients.length - 1].id;
                 }
             }
@@ -24,11 +24,11 @@ module.exports = {
     },
 
     nextName: (clients, id) => {
-        for(const client of clients) {
+        for (const client of clients) {
             if (client.id === id) {
-                if(id != clients[clients.length - 1].id){
+                if (id != clients[clients.length - 1].id) {
                     return clients[clients.indexOf(client) + 1].first_name
-                }else{
+                } else {
                     return clients[0].first_name;
                 }
             }
@@ -36,11 +36,11 @@ module.exports = {
     },
 
     prevName: (clients, id) => {
-        for(const client of clients) {
+        for (const client of clients) {
             if (client.id === id) {
-                if(id != clients[0].id){
+                if (id != clients[0].id) {
                     return clients[clients.indexOf(client) - 1].first_name
-                }else{
+                } else {
                     return clients[clients.length - 1].first_name;
                 }
             }
@@ -61,7 +61,7 @@ module.exports = {
     },
     hasMeals: (mealPlan, day, mealTime, options) => {
         console.log(mealPlan.plan);
-        if(mealPlan.plan.days.length === 0) return options.inverse(this);
+        if (mealPlan.plan.days.length === 0) return options.inverse(this);
 
         const indexDay = mealPlan.plan.days.findIndex(element => element.day == day);
         let render = [`<a href=""
@@ -88,5 +88,60 @@ module.exports = {
         } else {
             return options.inverse(this);
         }
-    }
+    },
+    oppositeSex: (currentSex) => {
+        if (currentSex === "Male") {
+            return "Female"
+        } else {
+            return "Male"
+        }
+    },
+
+    newGoalA: (currentGoal) => {
+        if (currentGoal === "Gain" || currentGoal === "Maintain") {
+            return "Lose"
+        } else {
+            return "Gain"
+        }
+    },
+
+    newGoalB: (currentGoal) => {
+        if (currentGoal === "Gain" || currentGoal === "Lose") {
+            return "Maintain"
+        } else {
+            return "Lose"
+        }
+    },
+
+    newActivityA: (currentActivity) => {
+        if (currentActivity === "Sedentary") {
+            return "Light"
+        } else {
+            return "Sedentary"
+        }
+    },
+
+    newActivityB: (currentActivity) => {
+        if (currentActivity === "Sedentary" || currentActivity === "Light") {
+            return "Moderate"
+        } else {
+            return "Light"
+        }
+    },
+
+    newActivityC: (currentActivity) => {
+        if (currentActivity === "Heavy" || currentActivity === "Athlete") {
+            return "Moderate"
+        } else {
+            return "Heavy"
+        }
+    },
+
+    newActivityD: (currentActivity) => {
+        if (currentActivity === "Athlete") {
+            return "Heavy"
+        } else {
+            return "Athlete"
+        }
+    },
 };
