@@ -70,7 +70,7 @@
           ></button>
         </div>
         <div class="modal-body">
-          <form class="row g-3 needs-validation" id="new-customer-form" novalidate>
+          <form class="row g-3 needs-validation" id="new-customer-form" data-id="{{id}}" novalidate>
             <div class="col-md-4">
               <label for="first-name" class="form-label">First name</label>
               <input
@@ -186,7 +186,25 @@
                 <option>Mantain</option>
               </select>
               <div class="invalid-feedback">
-                Please select a valid Gender.
+                Please select one option.
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="activity" class="form-label">Activity</label>
+              <select
+                class="form-select"
+                id="activity"
+                required
+              >
+                <option selected disabled value="">Choose...</option>
+                <option>Sedentary</option>
+                <option>Light</option>
+                <option>Moderate</option>
+                <option>Heavy</option>
+                <option>Athlete</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select one option.
               </div>
             </div>
             <div class="col-12">
@@ -195,7 +213,7 @@
                 class="btn btn-secondary"
                 data-bs-dismiss="modal"
               >Close</button>
-              <button class="btn btn-primary" type="submit">Submit form</button>
+              <button class="btn btn-primary" type="submit" >Submit form</button>
             </div>
           </form>
         </div>
