@@ -56,7 +56,7 @@ router.get("/client/:id", async (req, res) => {
 
     const clientsData = await Patient.findAll({
       where: {
-        nutritionist_id: 1,
+        nutritionist_id: req.session.user_id,
       }
     });
     const clients = clientsData.map((client) => client.get({plain: true}));

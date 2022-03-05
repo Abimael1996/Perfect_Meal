@@ -2,11 +2,14 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/adminsview.css">
 <header>
+  {{#if clients.[1]}}
     <a class="btn btn-primary" href="/client/{{before clients id}}" role="button" id="before">< {{prevName clients id}}</a>
     <h1>{{first_name}} {{last_name}}</h1>
     <a class="btn btn-primary" href="/client/{{next clients id}}" role="button" id="next">{{nextName clients id}} ></a>
+    {{else}}
+    <h1>{{first_name}} {{last_name}}</h1>
+    {{/if}}
 </header>
-
 <main>
     <section id="topSection">
         <div class="card text-black mb-3">
