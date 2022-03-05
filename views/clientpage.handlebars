@@ -13,40 +13,31 @@
       {{/if}}
 </header>
 <main>
-  <section id="topSection">
-    <div class="card text-black mb-3">
-      <div class="card-header">
-        <div class="info">
-          <h5 class="card-title">Client Info</h5>
-          <button type="button" class="btn btn-primary new-button" data-bs-toggle="modal"
-            data-bs-target="#exampleModal">
-            Update
-          </button>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="card">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <div class="info"><span>Age:</span><span id="age">{{age}}</span></div>
-            </li>
-            <li class="list-group-item">
-              <div class="info"><span>Sex:</span><span id="sex">{{sex}}</span></div>
-            </li>
-            <li class="list-group-item">
-              <div class="info"><span>Height:</span><span><span id="current-height">{{height}}</span><span>
-                    ft</span></span></div>
-            </li>
-            <li class="list-group-item">
-              <div class="info"><span>Weight:</span><span><span id="current-weight">{{weight}}</span><span>
-                    lb</span></span></div>
-            </li>
-            <li class="list-group-item">
-              <div class="info"><span>Activity:</span><span><span id="activity">{{activity}}</span></span></div>
-            </li>
-            <li class="list-group-item">
-              <div class="info"><span>TDDE</span><span><span id="tdde"></span><span> cal</span></span></div>
-            </li>
+    <section id="topSection">
+        <div class="card text-black mb-3">
+            <div class="card-header">
+                <h5 class="card-title">Client Info</h5>
+                        <button
+    type="button"
+    class="btn btn-primary new-button"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+  >
+    Update
+  </button>
+            </div>
+            <div class="card-body">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><div class="info"><span>Age:</span><span id="age">{{age}}</span></div></li>
+                        <li class="list-group-item"><div class="info"><span>Sex:</span><span id="sex">{{sex}}</span></div></li>
+                        <li class="list-group-item"><div class="info"><span>Height:</span><span><span id="current-height">{{height}}</span><span> cm</span></span></div></li>
+                        <li class="list-group-item"><div class="info"><span>Weight:</span><span><span id="current-weight">{{weight}}</span><span> kg</span></span></div></li>
+                        <li class="list-group-item"><div class="info"><span>Activity:</span><span><span id="activity">{{activity}}</span></span></div></li>
+                        <li class="list-group-item"><div class="info"><span>TDDE</span><span><span id="tdde"></span><span> cal</span></span></div></li>
+
+                    </ul>
+                </div>
 
           </ul>
         </div>
