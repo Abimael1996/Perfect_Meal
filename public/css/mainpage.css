@@ -1,0 +1,30 @@
+.logo {
+  width: 210px;
+}
+
+.contact-us {
+  width: 200px;
+}
+
+.new-button {
+  margin: 0;
+  background-color: var(--coral);
+  border-color: var(--coral);
+  color: var(--cocunut-cream);
+}
+
+:root {
+  --cocunut-cream: #f9f1db;
+  --coral: #f87749;
+  --coralstrong: #ec5c28ea;
+  --tumbleweed: #dca480;
+  --japonica: #d4746c;
+  --japonicalight: #d4756cda;
+  --gray: #444242da;
+  --lightgray: #6d6a6ada;
+}
+
+.new-button:hover {
+  background-color: var(--coralstrong);
+  color: var(--cocunut-cream);
+}

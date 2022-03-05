@@ -2,20 +2,58 @@
   text-align: center;
   font-size: 80px;
   font-family: "Quicksand", sans-serif;
-  padding: 50px;
-  margin-bottom: 50px;
+  padding: 20px;
+  margin-bottom: 30px;
+  color: var(--coral);
 }
 
 h1 {
   font-size: 50px;
   font-family: "Quicksand", sans-serif;
+  color: var(--coral);
+}
+
+body {
+  background-color: rgb(37, 35, 35);
 }
 
 .new-button {
-  font-size: 20px;
-  display: block;
-  flex: auto;
-  margin-left: 150px;
+  margin: 0;
+  background-color: var(--coral);
+  border-color: var(--coral);
+  color: var(--cocunut-cream);
+}
+
+.new-button:hover {
+  background-color: var(--coralstrong);
+  color: var(--cocunut-cream);
+}
+
+.patient-name {
+  color: var(--cocunut-cream);
+}
+
+.patient-name:hover {
+  color: white;
+}
+
+.delete-btn {
+  color: var(--cocunut-cream);
+  background-color: rgb(211, 75, 75);
+}
+
+.delete-btn:hover {
+  color: var(--cocunut-cream);
+}
+
+.create-customer {
   font-family: "Quicksand", sans-serif;
-  margin-top: 50px;
+}
+
+.m-title {
+  color: var(--coralstrong);
+}
+
+.m-header {
+  background-color: rgb(37, 35, 35);
 }
