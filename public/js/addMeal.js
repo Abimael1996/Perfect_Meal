@@ -3,7 +3,7 @@ const foodTitleInput = document.querySelector('#food-title');
 const notesInput = document.querySelector('#notes');
 const updateMealtBtn = document.querySelector('.update-meal');
 const createMealBtn = document.querySelector('.create-meal');
-const meal = document.querySelectorAll('.meal');
+const meal = document.querySelectorAll('.meal'); //CHECK
 const planTitle = document.querySelector('.plan-title');
 
 let planId = planTitle.getAttribute('data-planid');
@@ -16,6 +16,7 @@ addMealBtn.forEach(button => {
     button.addEventListener('click', (e) => {
         mealTime = e.target.parentElement.parentElement.getAttribute('data-mealtime');
         day = e.target.parentElement.getAttribute('data-day');
+        console.log(mealTime);
     })
 });
 
@@ -119,13 +120,13 @@ async function addMeal(postData) {
 //         },
 //     });
 
-// const getMeals = () =>
-//     fetch('/api/meals', {
-//         method: 'GET',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//     });
+const getMeals = () =>
+    fetch('/api/meals', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
 
 // const createMeal = (meal) =>
 //     fetch('/api/meals', {
@@ -144,7 +145,9 @@ async function addMeal(postData) {
 //         },
 //     });
 
-
+function renderMeals() {
+    
+}
 //Functions
 // const handleIngredientDelete = (e) => {
 //     ingredientList.removeChild(e.target.parentElement);
