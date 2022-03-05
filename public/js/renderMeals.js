@@ -1,6 +1,6 @@
 const foodName = document.querySelectorAll(".foodName");
 
-for(const food of foodName) {
+for (const food of foodName) {
     const parent = food.parentElement;
     const grandParent = food.parentElement.parentElement;
 
@@ -12,26 +12,23 @@ for(const food of foodName) {
 
     const foodName = food.getAttribute("data-name");
 
-
-
-    if(row === rowParent && column === columnParent) {
-        food.textContent = foodName;
-    } 
+    if (row === rowParent && column === columnParent) {
+        food.setAttribute('data-toggle', 'modal');
+        food.setAttribute('data-target', '#modalMeal');
+        food.innerHTML = `${foodName} <i class="fas fa-trash-alt float-right text-danger delete-meal"></i>`;
+    }
 
 };
 
 const survFood = document.querySelectorAll(".foodName");
 
 for (const each of survFood) {
-    if(!each.textContent) {
+    if (!each.textContent) {
         each.parentElement.remove();
     }
 };
 
 const divs = document.querySelectorAll(".divDay");
-
-console.log(divs.length);
-
 
 for (const div of divs) {
     if (div.children.length === 0) {
@@ -42,17 +39,19 @@ for (const div of divs) {
 const cells = document.querySelectorAll(".cell");
 
 for (const cell of cells) {
-    if(cell.children.length === 0){
-        /*<a href=""
-        class="btn btn-success btn-rounded add-meal-btn"
-        data-toggle="modal"
-        data-target="#modalMeal">Add Meal</a>*/
+    if (cell.children.length === 0) {
         const addMealTd = document.createElement("a");
-        addMealTd.classList.add('btn', 'btn-success', 'btn-rounded' ,'add-meal-btn');
-        addMealTd.setAttribute('data-toggle','modal');
+        addMealTd.classList.add('btn', 'btn-success', 'btn-rounded', 'add-meal-btn');
+        addMealTd.setAttribute('data-toggle', 'modal');
         addMealTd.setAttribute('data-target', '#modalMeal');
-        addMealTd.textContent = "Add Meal"
+        addMealTd.textContent = "Add Meal";
         cell.appendChild(addMealTd);
-        // cell.textContent = "Add Meal"
+    } else {
+        const addMealTd = document.createElement("a");
+        addMealTd.classList.add('btn', 'btn-success', 'btn-rounded', 'add-meal-btn', 'btn-sm');
+        addMealTd.setAttribute('data-toggle', 'modal');
+        addMealTd.setAttribute('data-target', '#modalMeal');
+        addMealTd.textContent = "Add Meal";
+        cell.appendChild(addMealTd);
     }
 }

@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
 router.get("/admin", withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
-    console.log(req.session.user_id);
+    
     const userData = await Nutritionist.findByPk(req.session.user_id, {
       attributes: { exclude: ["last_name", "first_name"] },
     });
@@ -24,11 +24,11 @@ router.get("/admin", withAuth, async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
-    console.log(user);
+    
     const patients = patientsData.map((patient) =>
       patient.get({ plain: true })
     );
-    console.log(patients);
+    
 
     res.render("adminpage", {
       ...user,
@@ -52,7 +52,7 @@ router.get("/client/:id", withAuth, async (req, res) => {
       },
     });
     const client = clientData.get({ plain: true });
-    console.log(client);
+    
 
     const clientsData = await Patient.findAll({
       where: {
@@ -60,7 +60,7 @@ router.get("/client/:id", withAuth, async (req, res) => {
       }
     });
     const clients = clientsData.map((client) => client.get({plain: true}));
-    console.log(clients);
+    
 
     res.render("clientpage", {
       ...client,
@@ -93,7 +93,7 @@ router.get('/client/:id/plan', withAuth, async (req, res) => {
 
     const plan = planData.get({ plain: true });
 
-    console.log(plan);
+    
 
     //res.status(200).json(plan);
     res.render('nutritionplan', {

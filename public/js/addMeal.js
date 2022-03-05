@@ -3,8 +3,12 @@ const foodTitleInput = document.querySelector('#food-title');
 const notesInput = document.querySelector('#notes');
 const updateMealtBtn = document.querySelector('.update-meal');
 const createMealBtn = document.querySelector('.create-meal');
-const meal = document.querySelectorAll('.meal'); //CHECK
 const planTitle = document.querySelector('.plan-title');
+const deleteMealBtn = document.querySelectorAll('.delete-meal');
+const mealEl = document.querySelectorAll('.foodName');
+const modalTitleSection = document.querySelector('.title-section');
+const modalNoteSection = document.querySelector('.note-section');
+const closeModalBtn = document.querySelector('.modal-header .close');
 
 let planId = planTitle.getAttribute('data-planid');
 let mealTime;
@@ -16,8 +20,13 @@ addMealBtn.forEach(button => {
     button.addEventListener('click', (e) => {
         mealTime = e.target.parentElement.parentElement.getAttribute('data-mealtime');
         day = e.target.parentElement.getAttribute('data-day');
-        console.log(mealTime);
     })
+});
+
+deleteMealBtn.forEach(button => {
+    button.addEventListener('click', (e) => {
+        deleteMeal(e.target.parentElement.getAttribute('data-meal-id'));
+    });
 });
 
 foodTitleInput.addEventListener('input', (e) => {
@@ -28,7 +37,17 @@ foodTitleInput.addEventListener('input', (e) => {
     }
 });
 
+closeModalBtn.addEventListener('click', () => {
+    document.location.reload();
+})
 
+mealEl.forEach(meal => {
+    meal.addEventListener('click', (e) => {
+        const title = e.target.getAttribute('data-name');
+        const note = e.target.getAttribute('data-note');
+        renderModal(title, note);
+    })
+});
 
 // Show an element
 const show = (elem) => {
@@ -37,7 +56,7 @@ const show = (elem) => {
 
 // Hide an element
 const hide = (elem) => {
-    elem.classList.add('invisible');
+    elem.style.display = 'none';
 };
 
 // API interaction
@@ -70,7 +89,7 @@ async function addMeal(postData) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(mealData),
-    }); ///DELETE 
+    });
 
     const mealResponse = await meal.json();
     const mealId = mealResponse.id;
@@ -111,61 +130,44 @@ async function addMeal(postData) {
     }
 }
 
-
-// const deleteIngredient = (id) =>
-//     fetch(`/api/ingredients/${id}`, {
-//         method: 'DELETE',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//     });
-
-const getMeals = () =>
-    fetch('/api/meals', {
-        method: 'GET',
+async function deleteMeal(id) {
+    const removeMeal = await fetch(`/api/meals/${id}`, {
+        method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
         },
     });
 
-// const createMeal = (meal) =>
-//     fetch('/api/meals', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(meal),
-//     });
-
-// const deleteMeal = (id) =>
-//     fetch(`/api/meals/${id}`, {
-//         method: 'DELETE',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//     });
-
-function renderMeals() {
-    
+    if (removeMeal.ok) {
+        window.location.reload();
+    } else {
+        new Error('Something went wrong!');
+        alert('Something went wrong!');
+    }
 }
 //Functions
-// const handleIngredientDelete = (e) => {
-//     ingredientList.removeChild(e.target.parentElement);
-// };
+function renderModal(title, note) {
+    hide(createMealBtn);
+    const titleDiv = document.createElement('div');
+    const titleEl = document.createElement('p');
+    titleEl.textContent = title;
+
+    const noteDiv = document.createElement('div');
+    const noteEl = document.createElement('p');
+    noteEl.textContent = note;
+
+    titleDiv.appendChild(titleEl);
+    noteDiv.appendChild(noteEl);
+    modalTitleSection.removeChild(document.querySelector('input'));
+    modalNoteSection.removeChild(document.querySelector('textarea'));
+    modalTitleSection.appendChild(titleDiv);
+    modalNoteSection.appendChild(noteDiv);
+}
 
 // Add a new Meal
 createMealBtn.addEventListener('click', (e) => {
     postData.plan_id = planId;
     postData.day = day;
 
-    console.log(postData)
-
     addMeal(postData);
-    //window.location.reload()
 });
-
-//Render Ingredients when clicking on a Meal TODO-------
-// meal.forEach(element => {
-//     element.addEventListener('click', getAndRenderIngredients());
-// });
-

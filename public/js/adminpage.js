@@ -26,23 +26,23 @@ function newFunction() {
 const newFormHandler = async (event) => {
   event.preventDefault();
   const nutritionist_id = event.target.getAttribute("data-id");
-  console.log(nutritionist_id);
+  
   const firstName = document.querySelector("#first-name").value;
-  console.log(firstName);
+  
   const lastName = document.querySelector("#last-name").value;
-  console.log(lastName);
+  
   const weight = document.querySelector("#weight").value;
-  console.log(weight);
+  
   const height = document.querySelector("#height").value;
-  console.log(height);
+  
   const gender = document.querySelector("#Gender").value;
-  console.log(gender);
+  
   const age = document.querySelector("#Age").value;
-  console.log(age);
+  
   const goal = document.querySelector("#goal").value;
-  console.log(goal);
+  
   const activity = document.querySelector("#activity").value;
-  console.log(activity);
+  
   if (
     nutritionist_id &&
     firstName &&
@@ -103,4 +103,4 @@ const deletButtons = document.querySelectorAll(".customer-list");
 for (const button of deletButtons) {
   button.addEventListener("click", delButtonHandler);
 }
-console.log(deletButtons);
+

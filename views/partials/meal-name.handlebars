@@ -3,7 +3,7 @@
     {{#each day.meals as |meal|}}
     <div class="divMeal" data-meal="{{meal.meal_time}}">
         {{#each meal.food as |food|}}
-        <p class="foodName" data-name="{{food.name}}"></p>
+        <p class="foodName" data-name="{{food.name}}" data-meal-id="{{food.meal_food.meal_id}}" data-note="{{food.ingredients.[0].name}}"></p>
         {{/each}}
     </div>
     {{/each}}
