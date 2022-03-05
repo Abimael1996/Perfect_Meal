@@ -2,13 +2,12 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/adminsview.css">
 <header>
-    <a class="btn btn-primary" href="/client/{{before id}}" role="button" id="before"><</a>
+    <a class="btn btn-primary" href="/client/{{before clients id}}" role="button" id="before">< {{prevName clients id}}</a>
     <h1>{{first_name}} {{last_name}}</h1>
-    <a class="btn btn-primary" href="/client/{{next id}}" role="button" id="next">></a>
+    <a class="btn btn-primary" href="/client/{{next clients id}}" role="button" id="next">{{nextName clients id}} ></a>
 </header>
 
 <main>
-
     <section id="topSection">
         <div class="card text-black mb-3">
             <div class="card-header">
@@ -17,11 +16,12 @@
             <div class="card-body">
                 <div class="card">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><div class="info"><span>Age:</span><span>{{age}}</span></div></li>
-                        <li class="list-group-item"><div class="info"><span>Sex:</span><span>{{sex}}</span></div></li>
-                        <li class="list-group-item"><div class="info"><span>Height:</span><span>{{height}} ft</span></div></li>
+                        <li class="list-group-item"><div class="info"><span>Age:</span><span id="age">{{age}}</span></div></li>
+                        <li class="list-group-item"><div class="info"><span>Sex:</span><span id="sex">{{sex}}</span></div></li>
+                        <li class="list-group-item"><div class="info"><span>Height:</span><span><span id="current-height">{{height}}</span><span> ft</span></span></div></li>
                         <li class="list-group-item"><div class="info"><span>Weight:</span><span><span id="current-weight">{{weight}}</span><span> lb</span></span></div></li>
-                        <li class="list-group-item"><div class="info"><span>TDDE</span><span><span id="maintenance-cal">2780</span><span> cal</span></span></div></li>
+                        <li class="list-group-item"><div class="info"><span>Activity:</span><span><span id="activity">{{activity}}</span></span></div></li>
+                        <li class="list-group-item"><div class="info"><span>TDDE</span><span><span id="tdde"></span><span> cal</span></span></div></li>
 
                     </ul>
                 </div>
@@ -34,16 +34,16 @@
             </div>
             <div class="card-body">
                 <div class="card goalCard">
-                    <h5 class="card-title">Week Goal</h5>
+                    <h5 class="card-title">Fortnight Goal</h5>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item goal" id="goal" data-goal="gain">169.5 lb</li>
+                        <li class="list-group-item goal" id="goal" data-goal="{{goal}}"><span><span id="fortnight-goal"></span><span> lb</span></span></div></li></li>
                     </ul>
                     <h5 class="card-title">Macros for today</h5>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item goal"><div class="info"><span>Protein: </span><span><span id="protein-goal"></span><span> gr</span></span></div></li>
                         <li class="list-group-item goal"><div class="info"><span>Carbs: </span><span><span id="carbs-goal"></span><span> gr</span></span></div></li>
                         <li class="list-group-item goal"><div class="info"><span>Fat: </span><span><span id="fat-goal"></span><span></span>  gr</span></div></li>
-                        <li class="list-group-item goal"><div class="info"><span>Food Energy: </span><span><span id="food-energy-goal"></span><span> cal</span></span></div></li>
+                        <li class="list-group-item goal"><div class="info"><span>Total calories: </span><span><span id="total-calories-goal"></span></span></div></li>
                     </ul>
                 </div>
 
@@ -53,7 +53,8 @@
     </section>
         <h2>Nutrition Plan</h2>
     <section id="nutritionPlan">
-        <button type="button" class="btn btn-primary btn-lg">Create a Nutrition Plan</button>
+        <button type="button" class="btn btn-primary btn-lg" id="create-plan" data-id="{{id}}" data-name="{{first_name}}">Create a Nutrition Plan</button>
     </section>
 </main>
 <script src="/js/getMacros.js"></script>
+<script src="/js/createMealPlan.js"></script>

@@ -1,7 +1,7 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
-class Patient extends Model {}
+class Patient extends Model { }
 
 Patient.init(
     {
@@ -50,9 +50,8 @@ Patient.init(
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        date_of_birth: {
-            type: DataTypes.DATEONLY,
-            allowNull: false,
+        activity: {
+            type: DataTypes.ENUM('Sedentary', 'Light', 'Moderate', 'Heavy', 'Athlete')
         },
         nutritionist_id: {
             type: DataTypes.INTEGER,
@@ -62,13 +61,13 @@ Patient.init(
             },
         }
     },
-    {
-        sequelize,
-        timestamps: false,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'patient',
-    }
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "patient",
+  }
 );
 
 module.exports = Patient;
