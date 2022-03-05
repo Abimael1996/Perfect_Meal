@@ -85,8 +85,12 @@
   </section>
   <h2 class="nutrition-plan">Nutrition Plan</h2>
   <section id="nutritionPlan">
+    {{#if meal_plans}}
+      <a class="btn btn-primary" href="/client/{{id}}/plan" role="button">Go to Meal Plan</a>
+      {{else}}
     <button type="button" class="btn new-button btn-lg" id="create-plan" data-id="{{id}}"
       data-name="{{first_name}}">Create a Nutrition Plan</button>
+      {{/if}}
   </section>
 
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
