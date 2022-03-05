@@ -8,7 +8,7 @@ INSERT INTO patient (first_name, last_name, weight, height, sex, goal, age, acti
 VALUES ("Roman", "Beltran", "190", "5.10", "Male", "Lose", "23", "Sedentary", "1");
 
 INSERT INTO patient (first_name, last_name, weight, height, sex, goal, age, nutritionist_id) 
-VALUES ("Julia", "Osuna", "143", "5.06", "female", "lose", "19", "1");
+VALUES ("Julia", "Osuna", "143", "5.6", "female", "lose", "19", "1");
 
 INSERT INTO meal_plan (name, patient_id)
 VALUES ("Abi's Plan", 1);

@@ -14,22 +14,21 @@ const carbsGoal = document.querySelector("#carbs-goal");
 //CALCULATE VALUES
 
 if (weightGoal === "Gain") {
-    fortnightGoal.textContent = +currentWeight + 1;
+    fortnightGoal.textContent = +currentWeight + .5;
 } else if (weightGoal === "Lose") {
-    fortnightGoal.textContent = +currentWeight - 1;
+    fortnightGoal.textContent = +currentWeight - .5;
 } else {
     fortnightGoal.textContent = currentWeight;
 }
 
 const calculateBRM = () => {
-    const weightKg = currentWeight / 2.2;
-    const heightCm = currentHeight * 12 * 2.54;
+    const heightInCm = currentHeight * 100;
     if (sex === "Male") {
 
-        return (10 * weightKg) + (6.25 * heightCm) - (5 * age) + 5;
+        return (10 * currentWeight) + (6.25 * heightInCm) - (5 * age) + 5;
 
     } else {
-        return (10 * weightKg) + (6.25 * heightCm) - (5 * age) - 161;
+        return (10 * currentWeight) + (6.25 * heightInCm) - (5 * age) - 161;
     }
 }
 
@@ -69,7 +68,8 @@ const calculateFatGoal = () => {
 }
 
 const calculateproteinGoal = () => {
-    return proteinGoal.textContent = currentWeight;
+    const weightInLb = currentWeight * 2.2;
+    return proteinGoal.textContent = weightInLb;
 }
 
 const calculateCarbsGoal = () => {
