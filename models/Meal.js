@@ -11,9 +11,16 @@ Meal.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        name: {
-            type: DataTypes.STRING,
+        meal_time: {
+            type: DataTypes.ENUM('1','2','3','4','5'),
             allowNull: false,
+        },
+        day_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'day',
+                key: 'id',
+            },
         },
     },
     {

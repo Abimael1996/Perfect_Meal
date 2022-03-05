@@ -1,22 +1,20 @@
 <link rel="stylesheet"
       type="text/css"
       href="/css/nutritionplan.css">
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
 
 <body>
     <main>
         <div class="text-center">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link"
-                       href="#"
-                       tabindex="-1">Previous</a>
-                </li>
-                <li class="page-item"><p>Week 1</p></li>
-                <li class="page-item">
-                    <a class="page-link"
-                       href="#">Next</a>
-                </li>
-            </ul>
+            <div class="justify-content-center">
+                <div>
+                    <p>{{name}}</p>
+                </div>
+            </div>
         </div>
         <div class="container">
             <table class="table table-bordered table-hover">
@@ -41,98 +39,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="row100">
-                        <td class="column100 column1"
-                            data-column="column1">Meal 1</td>
-                        <td class="column100 column2"
-                            data-column="column2"></td>
-                        <td class="column100 column3"
-                            data-column="column3"></td>
-                        <td class="column100 column4"
-                            data-column="column4"></td>
-                        <td class="column100 column5"
-                            data-column="column5"></td>
-                        <td class="column100 column6"
-                            data-column="column6"></td>
-                        <td class="column100 column7"
-                            data-column="column7"></td>
-                        <td class="column100 column8"
-                            data-column="column8"></td>
-                    </tr>
-                    <tr class="row100">
-                        <td class="column100 column1"
-                            data-column="column1">Snack</td>
-                        <td class="column100 column2"
-                            data-column="column2"></td>
-                        <td class="column100 column3"
-                            data-column="column3"></td>
-                        <td class="column100 column4"
-                            data-column="column4"></td>
-                        <td class="column100 column5"
-                            data-column="column5"></td>
-                        <td class="column100 column6"
-                            data-column="column6"></td>
-                        <td class="column100 column7"
-                            data-column="column7"></td>
-                        <td class="column100 column8"
-                            data-column="column8"></td>
-                    </tr>
-                    <tr class="row100">
-                        <td class="column100 column1"
-                            data-column="column1">Meal 2</td>
-                        <td class="column100 column2"
-                            data-column="column2"></td>
-                        <td class="column100 column3"
-                            data-column="column3"></td>
-                        <td class="column100 column4"
-                            data-column="column4"></td>
-                        <td class="column100 column5"
-                            data-column="column5"></td>
-                        <td class="column100 column6"
-                            data-column="column6"></td>
-                        <td class="column100 column7"
-                            data-column="column7"></td>
-                        <td class="column100 column8"
-                            data-column="column8"></td>
-                    </tr>
-                    <tr class="row100">
-                        <td class="column100 column1"
-                            data-column="column1">Snack</td>
-                        <td class="column100 column2"
-                            data-column="column2">--</td>
-                        <td class="column100 column3"
-                            data-column="column3">5:00 PM</td>
-                        <td class="column100 column4"
-                            data-column="column4">5:00 PM</td>
-                        <td class="column100 column5"
-                            data-column="column5">--</td>
-                        <td class="column100 column6"
-                            data-column="column6">9:00 AM</td>
-                        <td class="column100 column7"
-                            data-column="column7">--</td>
-                        <td class="column100 column8"
-                            data-column="column8">--</td>
-                    </tr>
-                    <tr class="row100">
-                        <td class="column100 column1"
-                            data-column="column1">Meal 3</td>
-                        <td class="column100 column2"
-                            data-column="column2">8:00 AM</td>
-                        <td class="column100 column3"
-                            data-column="column3">--</td>
-                        <td class="column100 column4"
-                            data-column="column4">--</td>
-                        <td class="column100 column5"
-                            data-column="column5">8:00 AM</td>
-                        <td class="column100 column6"
-                            data-column="column6">--</td>
-                        <td class="column100 column7"
-                            data-column="column7">5:00 PM</td>
-                        <td class="column100 column8"
-                            data-column="column8">8:00 AM</td>
-                    </tr>
+                    {{> table-meals}}
                 </tbody>
             </table>
+            {{> meal-detail}}
         </div>
     </main>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js">
+</script>
+<script src="/js/addMeal.js"></script>

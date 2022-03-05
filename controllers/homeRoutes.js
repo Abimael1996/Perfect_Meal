@@ -1,14 +1,6 @@
 const router = require("express").Router();
 
-const {
-  Patient,
-  Nutritionist,
-  Day,
-  Meal,
-  DayMeal,
-  Ingredient,
-  MealIngredient,
-} = require("../models");
+const { Patient, Nutritionist, MealPlan, Day, Meal, Food, MealFood, Ingredient, FoodIngredient } = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", (req, res) => {
@@ -80,12 +72,30 @@ router.get("/client/:id", async (req, res) => {
   }
 });
 
-//TODO: change /client/plan/ for /client/plan/:id once db tables are all set.
-router.get("/client/:id/plan/", async (req, res) => {
+router.get('/client/:id/plan', async (req, res) => {
   try {
-    //TODO: Get data by plan_id
-    res.render("nutritionplan", {
-      logged_in: req.session.logged_in,
+    const planData = await MealPlan.findOne({
+      include: [
+        {
+          model: Day,
+          include: [{
+            model: Meal,
+            include: [{
+              model: Food,
+              include: [{
+                model: Ingredient,
+              }]
+            }]
+          }]
+        }
+      ]
+    });
+
+    const plan = planData.get({ plain: true });
+
+    res.render('nutritionplan', {
+      plan,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
