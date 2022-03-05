@@ -14,7 +14,8 @@ const loginFormHandler = async (card) => {
     });
 
     if (response.ok) {
-      document.location.replace("/admin");
+      //document.location.replace("/admin");
+      document.location.replace("/twofactor");
     } else {
       alert("Invalid email or password");
     }
