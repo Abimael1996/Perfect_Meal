@@ -60,14 +60,18 @@ module.exports = {
 
     },
     hasMeals: (mealPlan, day, mealTime, options) => {
-        console.log(mealPlan);
+        console.log(mealPlan.plan.days);
         if (mealPlan.plan.days.length === 0) return options.inverse(this);
 
         const indexDay = mealPlan.plan.days.findIndex(element => element.day == day);
+        console.log(indexDay)
         let render = [`<a href=""
         class="btn btn-success btn-rounded btn-sm add-meal-btn"
         data-toggle="modal"
         data-target="#modalMeal">Add Meal</a>`];
+
+        if (indexDay === -1) return options.inverse(this);
+      
         const meals = mealPlan.plan.days[indexDay].meals;
 
         if (meals.length > 0) {

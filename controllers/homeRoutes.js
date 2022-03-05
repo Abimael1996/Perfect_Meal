@@ -95,6 +95,7 @@ router.get('/client/:id/plan', async (req, res) => {
 
     console.log(plan);
 
+    //res.status(200).json(plan);
     res.render('nutritionplan', {
       plan,
       logged_in: req.session.logged_in

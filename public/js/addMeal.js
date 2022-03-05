@@ -1,13 +1,11 @@
 const addMealBtn = document.querySelectorAll('.add-meal-btn');
 const foodTitleInput = document.querySelector('#food-title');
-const ingredientInput = document.querySelector('#ingredient');
-const addIngredientBtn = document.querySelector('.add-ingredient');
-const updateIngredientBtn = document.querySelector('.update-ingredient');
+const notesInput = document.querySelector('#notes');
+const updateMealtBtn = document.querySelector('.update-meal');
 const createMealBtn = document.querySelector('.create-meal');
-const ingredientList = document.querySelector('.list-container .list-group');
-const ingredients = document.querySelectorAll('.ingredient-item')
 const meal = document.querySelectorAll('.meal');
 const planTitle = document.querySelector('.plan-title');
+
 let planId = planTitle.getAttribute('data-planid');
 let mealTime;
 let day;
@@ -29,13 +27,7 @@ foodTitleInput.addEventListener('input', (e) => {
     }
 });
 
-ingredientInput.addEventListener('input', (e) => {
-    if (e.target.value != '') {
-        addIngredientBtn.removeAttribute('disabled');
-    } else {
-        addIngredientBtn.setAttribute('disabled', '');
-    }
-});
+
 
 // Show an element
 const show = (elem) => {
@@ -77,12 +69,14 @@ async function addMeal(postData) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(mealData),
-    });
+    }); ///DELETE 
 
     const mealResponse = await meal.json();
     const mealId = mealResponse.id;
+
     const foodData = {
-        name: foodTitleInput.value
+        name: foodTitleInput.value,
+        meal_id: mealId
     }
 
     const food = await fetch('/api/foods', {
@@ -94,45 +88,26 @@ async function addMeal(postData) {
     });
 
     const foodResponse = await food.json();
-    const mealFoodData = {
-        meal_id: mealId,
+
+    const notesData = {
+        name: notesInput.value,
         food_id: foodResponse.id
     };
 
-    const mealFood = await fetch('/api/mealfoods', {
+    const note = await fetch('/api/notes', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(mealFoodData),
+        body: JSON.stringify(notesData),
     });
 
-    const mealFoodResponse = await mealFood.json();
-    ////
-
-    const ingredientData = {
-        name: ingredient.value
-    };
-
-    const ingredient = await fetch('/api/ingredients', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(ingredientData),
-    });
-
-    // console.log(mealFood);
-
-    // const foodIngredients = await fetch('/api/foodingredients', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(ingredient),
-    // });
-
-    // console.log(foodIngredients);
+    if (note.ok) {
+        window.location.reload();
+    } else {
+        new Error('Something went wrong!');
+        alert('Something went wrong!');
+    }
 }
 
 
@@ -169,38 +144,21 @@ async function addMeal(postData) {
 //         },
 //     });
 
-const handleIngredientDelete = (e) => {
-    ingredientList.removeChild(e.target.parentElement);
-};
 
-// Add an ingredient
+//Functions
+// const handleIngredientDelete = (e) => {
+//     ingredientList.removeChild(e.target.parentElement);
+// };
+
+// Add a new Meal
 createMealBtn.addEventListener('click', (e) => {
     postData.plan_id = planId;
     postData.day = day;
 
-    console.log(postData);
+    console.log(postData)
 
     addMeal(postData);
-    //getIngredients();
-});
-
-addIngredientBtn.addEventListener('click', (e) => {
-    const ingredient = document.createElement("li");
-    const delBtnEl = document.createElement('i');
-
-    delBtnEl.classList.add(
-        'fas',
-        'fa-trash-alt',
-        'float-right',
-        'text-danger',
-        'delete-note'
-    );
-    delBtnEl.addEventListener('click', handleIngredientDelete);
-    ingredient.classList.add('ingredient-item');
-    ingredient.style.listStyleType = 'none';
-    ingredient.textContent = ingredientInput.value;
-    ingredient.append(delBtnEl);
-    ingredientList.appendChild(ingredient);
+    //window.location.reload()
 });
 
 //Render Ingredients when clicking on a Meal TODO-------
