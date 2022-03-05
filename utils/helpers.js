@@ -47,4 +47,59 @@ module.exports = {
         }
     },
 
+    oppositeSex: (currentSex) => {
+        if(currentSex === "Male") {
+            return "Female"
+        }else {
+            return "Male"
+        }
+    },
+
+    newGoalA: (currentGoal) => {
+        if(currentGoal === "Gain" || currentGoal === "Maintain") {
+            return "Lose"
+        }else{
+            return "Gain"
+        }
+    },
+
+    newGoalB: (currentGoal) => {
+        if(currentGoal === "Gain" || currentGoal === "Lose") {
+            return "Maintain"
+        }else{
+            return "Lose"
+        }
+    },
+
+    newActivityA: (currentActivity) => {
+        if(currentActivity === "Sedentary") {
+            return "Light"
+        }else{
+            return "Sedentary"
+        }
+    },
+
+    newActivityB: (currentActivity) => {
+        if(currentActivity === "Sedentary" || currentActivity === "Light") {
+            return "Moderate"
+        }else{
+            return "Light"
+        }
+    },
+
+    newActivityC: (currentActivity) => {
+        if(currentActivity === "Heavy" || currentActivity === "Athlete") {
+            return "Moderate"
+        }else{
+            return "Heavy"
+        }
+    },
+
+    newActivityD: (currentActivity) => {
+        if(currentActivity === "Athlete") {
+            return "Heavy"
+        }else{
+            return "Athlete"
+        }
+    },
 };

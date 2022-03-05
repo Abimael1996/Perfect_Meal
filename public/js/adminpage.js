@@ -31,10 +31,6 @@ const newFormHandler = async (event) => {
   console.log(firstName);
   const lastName = document.querySelector("#last-name").value;
   console.log(lastName);
-  const email = document.querySelector("#email").value;
-  console.log(email);
-  const password = document.querySelector("#password").value;
-  console.log(password);
   const weight = document.querySelector("#weight").value;
   console.log(weight);
   const height = document.querySelector("#height").value;
@@ -51,8 +47,6 @@ const newFormHandler = async (event) => {
     nutritionist_id &&
     firstName &&
     lastName &&
-    email &&
-    password &&
     weight &&
     height &&
     gender &&
@@ -66,8 +60,6 @@ const newFormHandler = async (event) => {
         nutritionist_id,
         first_name: firstName,
         last_name: lastName,
-        email,
-        password,
         weight,
         height,
         sex: gender,
