@@ -93,6 +93,9 @@ router.get('/client/:id/plan', withAuth, async (req, res) => {
 
     const plan = planData.get({ plain: true });
 
+    console.log(plan);
+
+    //res.status(200).json(plan);
     res.render('nutritionplan', {
       plan,
       logged_in: req.session.logged_in

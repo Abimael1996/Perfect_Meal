@@ -13,8 +13,8 @@ Ingredient.init(
             autoIncrement: true,
         },
         name: {
-            type: DataTypes.STRING,
-            allowNull: false,
+            type: DataTypes.STRING(1234),
+            allowNull: true,
         }
     },
     {

@@ -48,14 +48,16 @@ Meal.belongsToMany(Food, {
     through: {
         model: MealFood,
         unique: false
-    }
+    },
+    foreignKey: "meal_id"
 });
 
 Food.belongsToMany(Meal, {
     through: {
         model: MealFood,
         unique: false
-    }
+    },
+    foreignKey: "food_id"
 });
 
 Food.belongsToMany(Ingredient, {
