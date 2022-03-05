@@ -10,7 +10,6 @@ router.post("/", async (req, res) => {
             food_id: newFood.id
         });
         res.status(200).json(newFood);
-        res.status(200).json(newMealFood)   
     } catch (err) {
         res.status(400).json(err);
     }
