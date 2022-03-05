@@ -4,17 +4,14 @@ const ingredientInput = document.querySelector('#ingredient');
 const addIngredientBtn = document.querySelector('.add-ingredient');
 const updateIngredientBtn = document.querySelector('.update-ingredient');
 const createMealBtn = document.querySelector('.create-meal');
-const ingredientList = document.querySelectorAll('.list-container .list-group');
+const ingredientList = document.querySelector('.list-container .list-group');
+const ingredients = document.querySelectorAll('.ingredient-item')
 const meal = document.querySelectorAll('.meal');
 const planTitle = document.querySelector('.plan-title');
 let planId = planTitle.getAttribute('data-planid');
 let mealTime;
 let day;
 let postData = {};
-
-// createMealBtn.parentElement.parentElement.getAttribute('data-mealtime')
-// createMealBtn.parentElement.getAttribute('data-day')
-
 
 //Keeps button disabled until a Meal title or Ingredient is added.
 addMealBtn.forEach(button => {
@@ -59,7 +56,7 @@ const getIngredients = () =>
         },
     });
 
-async function addIngredient(postData) {
+async function addMeal(postData) {
     const day = await fetch('/api/days', {
         method: 'POST',
         headers: {
@@ -68,67 +65,84 @@ async function addIngredient(postData) {
         body: JSON.stringify(postData),
     });
 
-    console.log(day);
+    const dayResponse = await day.json();
+    const mealData = {
+        meal_time: mealTime,
+        day_id: dayResponse.id
+    }
 
     const meal = await fetch('/api/meals', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(day),
+        body: JSON.stringify(mealData),
     });
 
-    console.log(meal);
+    const mealResponse = await meal.json();
+    const mealId = mealResponse.id;
+    const foodData = {
+        name: foodTitleInput.value
+    }
 
     const food = await fetch('/api/foods', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(meal),
+        body: JSON.stringify(foodData),
     });
 
-    console.log(food);
+    const foodResponse = await food.json();
+    const mealFoodData = {
+        meal_id: mealId,
+        food_id: foodResponse.id
+    };
 
     const mealFood = await fetch('/api/mealfoods', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(food),
+        body: JSON.stringify(mealFoodData),
     });
 
-    console.log(mealFood);
+    const mealFoodResponse = await mealFood.json();
+    ////
+
+    const ingredientData = {
+        name: ingredient.value
+    };
 
     const ingredient = await fetch('/api/ingredients', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(mealFood),
+        body: JSON.stringify(ingredientData),
     });
 
-    console.log(mealFood);
+    // console.log(mealFood);
 
-    const foodIngredients = await fetch('/api/foodingredients', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(ingredient),
-    });
+    // const foodIngredients = await fetch('/api/foodingredients', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(ingredient),
+    // });
 
-    console.log(foodIngredients);
+    // console.log(foodIngredients);
 }
 
 
-const deleteIngredient = (id) =>
-    fetch(`/api/ingredients/${id}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
+// const deleteIngredient = (id) =>
+//     fetch(`/api/ingredients/${id}`, {
+//         method: 'DELETE',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//     });
 
 // const getMeals = () =>
 //     fetch('/api/meals', {
@@ -138,32 +152,55 @@ const deleteIngredient = (id) =>
 //         },
 //     });
 
-const createMeal = (meal) =>
-    fetch('/api/meals', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(meal),
-    });
+// const createMeal = (meal) =>
+//     fetch('/api/meals', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(meal),
+//     });
 
-const deleteMeal = (id) =>
-    fetch(`/api/meals/${id}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
+// const deleteMeal = (id) =>
+//     fetch(`/api/meals/${id}`, {
+//         method: 'DELETE',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//     });
+
+const handleIngredientDelete = (e) => {
+    ingredientList.removeChild(e.target.parentElement);
+};
 
 // Add an ingredient
-addIngredientBtn.addEventListener('click', (e) => {
+createMealBtn.addEventListener('click', (e) => {
     postData.plan_id = planId;
     postData.day = day;
 
     console.log(postData);
 
-    addIngredient(postData);
+    addMeal(postData);
     //getIngredients();
+});
+
+addIngredientBtn.addEventListener('click', (e) => {
+    const ingredient = document.createElement("li");
+    const delBtnEl = document.createElement('i');
+
+    delBtnEl.classList.add(
+        'fas',
+        'fa-trash-alt',
+        'float-right',
+        'text-danger',
+        'delete-note'
+    );
+    delBtnEl.addEventListener('click', handleIngredientDelete);
+    ingredient.classList.add('ingredient-item');
+    ingredient.style.listStyleType = 'none';
+    ingredient.textContent = ingredientInput.value;
+    ingredient.append(delBtnEl);
+    ingredientList.appendChild(ingredient);
 });
 
 //Render Ingredients when clicking on a Meal TODO-------

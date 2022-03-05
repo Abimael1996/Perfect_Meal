@@ -7,11 +7,11 @@ VALUES ("Abimael", "Monarrez", "169", "6.0", "Male", "Gain", "25", "Moderate", "
 INSERT INTO meal_plan (name, patient_id)
 VALUES ("Abi's Plan", 1);
 
--- INSERT INTO day (day, plan_id)
--- VALUES (0, 1), (1, 1), (2, 1), (3, 1), (4, 1), (5, 1), (6, 1);
+-- INSERT INTO day (day, plan_id) day_id
+-- VALUES ("7", 1), ("1", 1), ("2", 1), ("3", 1), ("4", 1), ("5", 1), ("6", 1);
 
--- INSERT INTO meal (meal_time, day_id)
--- VALUES (1, 1), (2, 1), (4, 5);
+-- INSERT INTO meal (meal_time, day_id) meal_id
+-- VALUES ("1", 1), ("2", 1), ("4", 5);
 
 -- INSERT INTO food (name)
 -- VALUES ("Banana Shake"), ("Strawberry Shake"), ("Vanilla Shake"), ("Chocolate Shake"), ("Mango Shake"), ("Blueberry Shake"), ("Oatmeal Shake"), ("Hamburger"), ("Salad"), ("Water");

@@ -1,10 +1,10 @@
 const router = require("express").Router();
-const { Day } = require("../../models");
+const { Food } = require("../../models");
 
 router.post("/", async (req, res) => {
     try {
-        const newDay = await Day.create(req.body);
-        res.status(200).json(newDay);
+        const Food = await Food.create(req.body);
+        res.status(200).json(Food);
     } catch (err) {
         res.status(400).json(err);
     }
