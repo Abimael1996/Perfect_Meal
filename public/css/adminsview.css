@@ -56,6 +56,36 @@ h1, h2, h5, #goal {
 }
 
 #before, #next {
-    height: fit-content;
-    font-size: 28px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100px;
+    line-height: 30px;
 }
+
+.iterateBtn {
+    font-size: 15px;
+}
+
+#clientName {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 300px;
+    margin: 0;
+    background-color: var(--coral);
+    border-color: var(--coral);
+    color: var(--cocunut-cream);
+}
+
+.new-button {
+    margin: 0;
+    background-color: var(--coral);
+    border-color: var(--coral);
+    color: var(--cocunut-cream);
+  }
+  
+  .new-button:hover {
+    background-color: var(--coralstrong);
+    color: var(--cocunut-cream);
+  }
