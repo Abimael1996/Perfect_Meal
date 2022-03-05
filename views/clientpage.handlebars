@@ -5,17 +5,18 @@
   {{#if clients.[1]}}
   <a class="btn btn-primary iterateBtn" href="/client/{{before clients id}}" role="button" id="before">
     < {{prevName clients id}}</a>
-      <h1 id="clientName">{{first_name}} {{last_name}}</h1>
+      <h1 class="clientName">{{first_name}} {{last_name}}</h1>
       <a class="btn btn-primary iterateBtn" href="/client/{{next clients id}}" role="button" id="next">{{nextName clients id}}
         ></a>
       {{else}}
-      <h1>{{first_name}} {{last_name}}</h1>
+      <h1 class="clientName">{{first_name}} {{last_name}}</h1>
       {{/if}}
 </header>
 <main>
     <section id="topSection">
         <div class="card text-black mb-3">
             <div class="card-header">
+              <div class="info">
                 <h5 class="card-title">Client Info</h5>
                         <button
     type="button"
@@ -25,13 +26,14 @@
   >
     Update
   </button>
+  </div>
             </div>
             <div class="card-body">
                 <div class="card">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><div class="info"><span>Age:</span><span id="age">{{age}}</span></div></li>
                         <li class="list-group-item"><div class="info"><span>Sex:</span><span id="sex">{{sex}}</span></div></li>
-                        <li class="list-group-item"><div class="info"><span>Height:</span><span><span id="current-height">{{height}}</span><span> cm</span></span></div></li>
+                        <li class="list-group-item"><div class="info"><span>Height:</span><span><span id="current-height">{{height}}</span><span> m</span></span></div></li>
                         <li class="list-group-item"><div class="info"><span>Weight:</span><span><span id="current-weight">{{weight}}</span><span> kg</span></span></div></li>
                         <li class="list-group-item"><div class="info"><span>Activity:</span><span><span id="activity">{{activity}}</span></span></div></li>
                         <li class="list-group-item"><div class="info"><span>TDDE</span><span><span id="tdde"></span><span> cal</span></span></div></li>

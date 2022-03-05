@@ -71,7 +71,7 @@ h5,
   font-size: 15px;
 }
 
-#clientName {
+.clientName {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

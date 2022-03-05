@@ -16,9 +16,10 @@
   <body class="">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/"> <img class="logo" src="/images/logo.png" alt="Logo perfect meal"> </a>
         {{#if logged_in}}
+        <a class="navbar-brand" href="/admin"> <img class="logo" src="/images/logo.png" alt="Logo perfect meal"> </a>
         {{else}}
+        <img class="logo" src="/images/logo.png" alt="Logo perfect meal">
         <ul class="navbar-nav ms-auto">
           <a class="navbar-brand" href="#contact"> <img class="contact-us" src="./images/contact-us.png" alt="contact us"> </a>
         </ul>

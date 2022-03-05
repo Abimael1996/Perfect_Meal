@@ -20,12 +20,18 @@ Patient.init(
       allowNull: false,
     },
     weight: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT(11, 1),
       allowNull: false,
+      validate: {
+        min: 1,
+      }
     },
     height: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
+      validate: {
+        min: 1,
+      }
     },
     sex: {
       type: DataTypes.ENUM("Male", "Female"),
@@ -38,6 +44,9 @@ Patient.init(
     age: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      validate: {
+        min: 1,
+      }
     },
     activity: {
       type: DataTypes.ENUM(
