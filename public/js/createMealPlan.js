@@ -1,9 +1,9 @@
 const createPlanBtn = document.querySelector("#create-plan");
 const planName = createPlanBtn.getAttribute("data-name");
 const id = createPlanBtn.getAttribute("data-id");
-//console.log(createPlanBtn);
-//console.log(planName);
-//console.log(id);
+//
+//
+//
 
 const postPlan = async (e) => {
     e.preventDefault();
@@ -13,7 +13,7 @@ const postPlan = async (e) => {
         patient_id: id,
     };
 
-    console.log(newMealPlan);
+    
 try {
     const res = await fetch("/api/plan", {
         method: "POST",
@@ -27,7 +27,7 @@ try {
     }
 
 }catch (err) {
-    console.log(err);
+    
 }
 
 }

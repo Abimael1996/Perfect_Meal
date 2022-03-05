@@ -10,5 +10,17 @@ router.post("/", async (req, res) => {
     }
 });
 
+router.delete("/:id", async (req, res) => {
+    try {
+        const removedMeal = await Meal.destroy({
+            where: {
+                id: req.params.id
+            }
+        });
+        res.status(200).json(removedMeal);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
 
 module.exports = router;

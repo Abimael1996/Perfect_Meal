@@ -60,7 +60,7 @@ module.exports = {
 
     },
     hasMeals: (mealPlan, day, mealTime, options) => {
-        console.log(mealPlan.plan.days);
+        
         if (mealPlan.plan.days.length === 0) return options.inverse(this);
 
         const indexDay = mealPlan.plan.days.findIndex(element => element.day == day);
