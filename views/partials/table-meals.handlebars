@@ -2,13 +2,13 @@
 {{#times 6}} {{!-- meals time --}}
 {{setVar 'mealOfDay' this}}
 <tr class="row100"
-    id="meal-{{this}}">
+    data-mealTime="{{this}}">
     <td class="column100 column1"
         data-column="column1">Meal {{@root.mealOfDay}}</td>
     {{#times 8}} {{!-- week days --}}
     {{setVar 'day' this}}
     <td class="column100 column2"
-        id="day-{{this}}"
+        data-day="{{this}}"
         data-column="column2">
         {{#hasMeals @root.mealPlan @root.day @root.mealOfDay}}
         {{else}}
