@@ -12,13 +12,17 @@ body {
   width: 100%;
   min-height: 100%;
   background: url("/images/front-image.png") no-repeat center bottom/cover;
-  height: 100%;
+  /*height: auto;*/
   background-position: center;
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: cover;
   position: relative;
 }
 
+.navbar-brand {
+  padding: 0;
+  margin: 0;
+}
 .img-container {
 }
 
@@ -48,8 +52,8 @@ h1 {
 
 h2 {
   margin-top: -17px;
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 1.7em;
+  font-family: "Shadows into Light", sans-serif;
+  font-size: 2em;
   text-align: center;
   font-weight: 400;
 }
@@ -64,13 +68,13 @@ a {
   width: 160px;
 }
 
-footer {
+/*footer {
   position: relative;
   left: 0px;
   bottom: 0px;
   width: 100%;
   background: #999;
-}
+}*/
 
 @media only screen and (max-width: 540px) {
   .inner-container {
