@@ -1,91 +1,100 @@
 body {
-    background-color: white;
+  background-color: rgb(54, 52, 52);
 }
 
 header {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
 }
 
-h1, h2, h5, #goal {
-    text-align: center;
+h1,
+h2,
+h5,
+#goal {
+  text-align: center;
 }
 
 .info {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 #topSection {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
 }
 
 .card {
-    box-sizing:content-box;
-    height: fit-content;
-    background-color: white;
-    min-width: 200px;
+  box-sizing: content-box;
+  height: fit-content;
+  background-color: white;
+  min-width: 200px;
 }
 
 .card-body {
-    height: fit-content;
-    min-width: 250px;
+  height: fit-content;
+  min-width: 250px;
 }
 
 .list-group-item {
-    background-color: white;
-    color: black;
+  background-color: white;
+  color: black;
 }
 
 .goal {
-    background-color: white;
-    color: black;
+  background-color: white;
+  color: black;
 }
 
 .goalCard {
-    background-color: white;
+  background-color: white;
 }
 
 #nutritionPlan {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 100px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 100px;
 }
 
-#before, #next {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 100px;
-    line-height: 30px;
+#before,
+#next {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100px;
+  line-height: 30px;
 }
 
 .iterateBtn {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 #clientName {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 300px;
-    margin: 0;
-    background-color: var(--coral);
-    border-color: var(--coral);
-    color: var(--cocunut-cream);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 300px;
+  margin: 0;
+  /*background-color: var(--coral);*/
+  border-color: var(--coral);
+  color: var(--cocunut-cream);
 }
 
-.new-button {
-    margin: 0;
-    background-color: var(--coral);
-    border-color: var(--coral);
-    color: var(--cocunut-cream);
-  }
-  
-  .new-button:hover {
-    background-color: var(--coralstrong);
-    color: var(--cocunut-cream);
-  }
+.new-button,
+#next,
+#before {
+  background-color: var(--coral);
+  border-color: var(--coral);
+  color: var(--cocunut-cream);
+}
+
+.new-button:hover {
+  background-color: var(--coralstrong);
+  color: var(--cocunut-cream);
+}
+
+.nutrition-plan {
+  color: var(--cocunut-cream);
+}
