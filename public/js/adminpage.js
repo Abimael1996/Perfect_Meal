@@ -25,7 +25,8 @@ function newFunction() {
 
 const newFormHandler = async (event) => {
   event.preventDefault();
-
+  const nutritionist_id = event.target.getAttribute("data-id");
+  console.log(nutritionist_id);
   const firstName = document.querySelector("#first-name").value;
   console.log(firstName);
   const lastName = document.querySelector("#last-name").value;
@@ -44,7 +45,10 @@ const newFormHandler = async (event) => {
   console.log(age);
   const goal = document.querySelector("#goal").value;
   console.log(goal);
+  const activity = document.querySelector("#activity").value;
+  console.log(activity);
   if (
+    nutritionist_id &&
     firstName &&
     lastName &&
     email &&
@@ -53,11 +57,13 @@ const newFormHandler = async (event) => {
     height &&
     gender &&
     age &&
-    goal
+    goal &&
+    activity
   ) {
-    const response = await fetch(`/api/customers`, {
+    const response = await fetch(`/api/client`, {
       method: "POST",
       body: JSON.stringify({
+        nutritionist_id,
         first_name: firstName,
         last_name: lastName,
         email,
@@ -67,6 +73,7 @@ const newFormHandler = async (event) => {
         sex: gender,
         age,
         goal,
+        activity,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -85,7 +92,7 @@ const delButtonHandler = async (event) => {
   if (event.target.hasAttribute("data-id"));
   const id = event.target.getAttribute("data-id");
 
-  const response = await fetch(`/api/customer/${id}`, {
+  const response = await fetch(`/api/client/${id}`, {
     method: "DELETE",
   });
 
