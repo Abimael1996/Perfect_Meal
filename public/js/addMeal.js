@@ -31,9 +31,12 @@ ingredientInput.addEventListener('input', (e) => {
     }
 });
 
+//Render Ingredients when clicking on a Meal
 meal.forEach(element => {
     element.addEventListener('click', getAndRenderIngredients());
 })
+
+addIngredientBtn.addEventListener('click', addIngredientToList(element));
 
 // Show an element
 const show = (elem) => {
@@ -48,6 +51,7 @@ const hide = (elem) => {
 // activeNote is used to keep track of the note in the textarea
 let activeIngredient = {};
 
+// API interaction
 const getIngredients = () =>
     fetch('/api/igredients', {
         method: 'GET',
@@ -56,7 +60,7 @@ const getIngredients = () =>
         },
     });
 
-const saveIngredient = (ingredient) =>
+const addIngredient = (ingredient) =>
     fetch('/api/ingredients', {
         method: 'POST',
         headers: {
@@ -115,7 +119,7 @@ const renderActiveIngredient = () => {
 
 const handleIngredientSave = () => {
   const newIngredient = {
-    title: ingredientInput.value,
+    name: ingredientInput.value,
   };
   saveNote(newIngredient).then(() => {
     getAndRenderIngredients();
@@ -123,6 +127,9 @@ const handleIngredientSave = () => {
   });
 };
 
+function addIngredientToList(element) {
+    addIngredient(element.target.value);
+}
 /*-------------
 -----------------*/
 

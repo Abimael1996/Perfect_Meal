@@ -98,9 +98,9 @@ router.get('/client/:id/plan', async (req, res) => {
 
     const plan = planData.get({ plain: true });
 
-    res.render('nutritionplan', { 
-      logged_in: req.session.logged_in,
-      plan 
+    res.render('nutritionplan', {
+      plan,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
