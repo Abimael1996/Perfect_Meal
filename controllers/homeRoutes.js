@@ -48,7 +48,19 @@ router.get("/client/:id", withAuth, async (req, res) => {
   try {
     const clientData = await Patient.findByPk(req.params.id, {
       include: [{
-        model: MealPlan
+        model: MealPlan,
+        include: [{
+          model: Day,
+          include: [{
+            model: Meal,
+            include: [{
+              model: Food,
+              include: [{
+                model: Ingredient,
+              }]
+            }]
+          }]
+        }]
       }],
       attributes: {
         exclude: ["password"],
@@ -56,7 +68,8 @@ router.get("/client/:id", withAuth, async (req, res) => {
     });
     const client = clientData.get({ plain: true });
     
-
+    console.log(client);
+    console.log(client.meal_plans.days);
     const clientsData = await Patient.findAll({
       where: {
         nutritionist_id: req.session.user_id,
@@ -64,7 +77,6 @@ router.get("/client/:id", withAuth, async (req, res) => {
     });
     const clients = clientsData.map((client) => client.get({plain: true}));
     
-
     res.render("clientpage", {
       ...client,
       clients,

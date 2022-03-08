@@ -1,5 +1,21 @@
 const router = require("express").Router();
-const { Meal } = require("../../models");
+const { Meal, Food } = require("../../models");
+
+router.get("/:id", async (req, res) => {
+    try {
+        const mealData = await Meal.findByPk(req.params.id, {
+            include: [{
+                model: Food,
+            }]
+        });
+        const meal = mealData.get({plain: true});
+        console.log(meal.food[0].id);
+        res.status(200).json(meal.food[0].id);
+    }catch(err) {
+        console.log(err);
+        res.status(400).json(err);
+    }
+});
 
 router.post("/", async (req, res) => {
     try {

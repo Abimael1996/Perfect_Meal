@@ -60,7 +60,7 @@ module.exports = {
 
     },
     hasMeals: (mealPlan, day, mealTime, options) => {
-        
+
         if (mealPlan.plan.days.length === 0) return options.inverse(this);
 
         const indexDay = mealPlan.plan.days.findIndex(element => element.day == day);
@@ -70,7 +70,7 @@ module.exports = {
         data-target="#modalMeal">Add Meal</a>`];
 
         if (indexDay === -1) return options.inverse(this);
-      
+
         const meals = mealPlan.plan.days[indexDay].meals;
 
         if (meals.length > 0) {
@@ -112,7 +112,7 @@ module.exports = {
         if (currentGoal === "Gain" || currentGoal === "Lose") {
             return "Maintain"
         } else {
-            return "Lose"
+            return "Gain"
         }
     },
 

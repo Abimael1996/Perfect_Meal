@@ -56,3 +56,34 @@ td {
   background-color: var(--coralstrong);
   color: var(--cocunut-cream);
 }
+
+.main-header {
+  text-align: center;
+  font-size: 60px;
+  font-family: "Quicksand", sans-serif;
+  padding: 20px;
+  margin-bottom: 30px;
+  color: var(--coral);
+}
+
+.foodName:hover {
+  cursor: pointer;
+}
+
+.modalBtnUpdate {
+  position: relative;
+  right: 60px;
+}
+
+.modalBtnCreate {
+  position: relative;
+  left: 60px;
+}
+
+
+#display-plan {
+  background-color: var(--coral);
+  border-color: var(--coral);
+  color: var(--cocunut-cream);
+  margin-bottom: 10px;
+}

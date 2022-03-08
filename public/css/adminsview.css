@@ -98,3 +98,99 @@ h5,
 .nutrition-plan {
   color: var(--cocunut-cream);
 }
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: rgb(54, 52, 52);
+}
+
+/*Table*/
+table {
+  width: 100%;
+  background-color: #fff;
+}
+
+th,
+td {
+  font-weight: unset;
+  padding-right: 10px;
+}
+
+.column100 {
+  width: 130px;
+  padding-left: 25px;
+}
+
+.column100.column1 {
+  width: 265px;
+  padding-left: 42px;
+}
+
+.row100.head th {
+  padding-top: 24px;
+  padding-bottom: 20px;
+}
+
+.row100 td {
+  padding-top: 18px;
+  padding-bottom: 14px;
+}
+
+.new-button {
+  background-color: var(--coral);
+  border-color: var(--coral);
+  color: var(--cocunut-cream);
+}
+
+.new-button:hover {
+  background-color: var(--coralstrong);
+  color: var(--cocunut-cream);
+}
+
+.main-header {
+  text-align: center;
+  font-size: 60px;
+  font-family: "Quicksand", sans-serif;
+  padding: 20px;
+  margin-bottom: 30px;
+  color: var(--coral);
+}
+
+.foodName:hover {
+  cursor: pointer;
+}
+
+.modalBtnUpdate {
+  position: relative;
+  right: 60px;
+}
+
+.modalBtnCreate {
+  position: relative;
+  left: 60px;
+}
+
+#display-plan {
+  background-color: var(--coral);
+  border-color: var(--coral);
+  color: var(--cocunut-cream);
+  position: relative;
+  bottom: 110px;
+  left: 560px;
+}
+
+table {
+  position: relative;
+  bottom: 100px;
+}
