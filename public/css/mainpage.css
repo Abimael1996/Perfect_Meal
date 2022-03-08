@@ -6,7 +6,7 @@
   width: 200px;
 }
 
-.new-button {
+.new-button, #searchBtn {
   margin: 0;
   background-color: var(--coral);
   border-color: var(--coral);
@@ -27,4 +27,9 @@
 .new-button:hover {
   background-color: var(--coralstrong);
   color: var(--cocunut-cream);
+}
+
+#searchBtn {
+  height: 40px;
+  width: 50px;
 }
