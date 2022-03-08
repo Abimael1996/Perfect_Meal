@@ -1,7 +1,7 @@
 const searchBtn = document.querySelector("#searchBtn");
 const searchInput = document.querySelector("#form1");
 
-searchBtn.addEventListener("click", async () => {
+const searchClient = async () => {
     const search = searchInput.value;
     try {
         const clientRes = await fetch("/api/client");
@@ -9,8 +9,8 @@ searchBtn.addEventListener("click", async () => {
         if (clientRes.ok) {
             let found = false;
             for (const client of clients) {
-                if (client.first_name.toLowerCase() === search.toLowerCase() ||
-                    `${client.first_name.toLowerCase()} ${client.last_name.toLowerCase()}` === search.toLowerCase()) {
+                if (client.first_name.toLowerCase().trim() === search.toLowerCase().trim() ||
+                    client.first_name.toLowerCase().trim() + client.last_name.toLowerCase().trim() === search.split(" ").join("").toLowerCase()) {
                     found = true;
                     window.location.replace(`/client/${client.id}`);
                 }
@@ -22,5 +22,12 @@ searchBtn.addEventListener("click", async () => {
     } catch (err) {
         alert(`Client ${search} does not exist.`)
     }
-})
+}
+searchBtn.addEventListener("click", searchClient);
+searchInput.addEventListener("keypress", (e) => {
+    if(e.key === "Enter") {
+        searchClient();
+    }
+});
+
 
