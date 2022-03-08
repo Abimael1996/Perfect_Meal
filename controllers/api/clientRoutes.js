@@ -2,6 +2,22 @@ const router = require("express").Router();
 const { Patient } = require("../../models");
 const withAuth = require("../../utils/auth");
 
+router.get("/", async (req, res) => {
+  try{
+    const clientData = await Patient.findAll({
+      where: {
+        nutritionist_id: req.session.user_id,
+      }
+    });
+    
+    const clients = clientData.map(client => client.get({plain: true}));
+    console.log(clients);
+    res.status(200).json(clients);
+  }catch(err){
+    res.status(400).json(err);
+  }
+})
+
 router.post("/", withAuth, async (req, res) => {
   try {
     const newPatient = await Patient.create(req.body);

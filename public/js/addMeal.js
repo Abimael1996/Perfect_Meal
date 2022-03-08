@@ -250,11 +250,11 @@ updateMealBtn.addEventListener("click", async () => {
 // Inside the modal we click on Create Meal
 // Then we trigger a function that receives the data needed to create a Day
 createMealBtn.addEventListener('click', (e) => {
-    console.log("CLICKEE ESTO");
     postData.plan_id = planId;
     postData.day = day;
 
     addMeal(postData, cell);
 });
+
 
 
