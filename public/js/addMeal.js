@@ -3,7 +3,6 @@ const notesInput = document.querySelector('#notes');
 const createMealBtn = document.querySelector('#create-meal');
 const updateMealBtn = document.querySelector('#update-meal');
 const planTitle = document.querySelector('.plan-title');
-//const mealEl = document.querySelectorAll('.foodName');
 const modalTitleSection = document.querySelector('.title-section');
 const modalNoteSection = document.querySelector('.note-section');
 const closeModalBtn = document.querySelector('.modal-header .close');
@@ -23,14 +22,6 @@ foodName.forEach(name => {
         }
     })
 });
-/*
-addMealBtn.forEach(button => {
-    button.addEventListener('click', (e) => {
-        console.log("hello");
-        mealTime = e.target.parentElement.parentElement.getAttribute('data-mealtime');
-        day = e.target.parentElement.getAttribute('data-day');
-    })
-});*/
 
 //Keeps button disabled until a Meal title or Ingredient is added.
 foodTitleInput.addEventListener('input', (e) => {
@@ -40,13 +31,6 @@ foodTitleInput.addEventListener('input', (e) => {
         createMealBtn.setAttribute('disabled', '');
     }
 });
-
-/*closeModalBtn.addEventListener('click', () => {
-    if (click) {
-        document.location.reload();
-    }
-});*/
-
 
 // Show an element
 const show = (elem) => {
@@ -181,7 +165,6 @@ async function deleteMeal(id, foodName) {
 
     if (removeMeal.ok) {
         foodName.remove();
-        //window.location.reload();
 
     } else {
         new Error('Something went wrong!');
@@ -197,23 +180,12 @@ function renderModal(title, note, id) {
     show(notesInput);
     foodLabel.textContent = "Food name";
     notesLabel.textContent = "Notes";
-    let trashIcon;
-    if (modalTitleSection.children.length === 3) {
-        trashIcon = document.createElement("i");
-        trashIcon.classList.add("fas", "fa-trash-alt", "float-right", "text-danger");
-        modalTitleSection.appendChild(trashIcon);
-    }
-
     const titleEl = document.createElement('p');
     titleEl.textContent = title;
     modalTitleSection.setAttribute("data-meal-id", id);
 
-    /*trashIcon.addEventListener('click', () => {
-        deleteMeal(id);
-    });*/
-
     foodTitleInput.value = title;
-    notesInput.textContent = note;
+    notesInput.value = note;
 }
 
 updateMealBtn.addEventListener("click", async () => {
@@ -255,7 +227,9 @@ updateMealBtn.addEventListener("click", async () => {
         for (const name of foodName) {
             if (name.getAttribute("data-meal-id") === id) {
                 name.innerHTML = `${foodTitleInput.value} <span class="delete-meal"><i class="fas fa-trash-alt float-right text-danger"></i></span>`;
-                name.setAttribute("data-name", foodTitleInput.value)
+                name.setAttribute("data-name", foodTitleInput.value);
+                name.setAttribute("data-note", notesInput.value)
+
             }
         }
         const deleteMealBtn = document.querySelectorAll('.delete-meal');
@@ -267,7 +241,6 @@ updateMealBtn.addEventListener("click", async () => {
                 deleteMeal(e.target.parentElement.parentElement.getAttribute('data-meal-id'), e.target.parentElement.parentElement);
             });
         })
-        //window.location.reload();
     } else {
         alert("something went wrong")
     }

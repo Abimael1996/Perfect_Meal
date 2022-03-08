@@ -87,40 +87,4 @@ router.get("/client/:id", withAuth, async (req, res) => {
   }
 });
 
-router.get('/client/:id/plan', withAuth, async (req, res) => {
-  try {
-    const planData = await MealPlan.findOne({
-      where: {
-        patient_id: req.params.id,
-      },
-      include: [
-        {
-          model: Day,
-          include: [{
-            model: Meal,
-            include: [{
-              model: Food,
-              include: [{
-                model: Ingredient,
-              }]
-            }]
-          }]
-        }
-      ]
-    });
-
-    const plan = planData.get({ plain: true });
-
-    
-
-    //res.status(200).json(plan);
-    res.render('nutritionplan', {
-      plan,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 module.exports = router;
