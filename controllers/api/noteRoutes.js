@@ -26,6 +26,35 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.get("/:name", async (req, res) => {
+  try {
+      const noteData = await Ingredient.findAll({
+          where: {
+              name: req.params.name,
+          }
+      });
+      const notes = noteData.map((note) => noteData.get({plain: true}));
+      console.log(notes);
+      res.status(200).json(notes);
+  }catch(err) {
+      res.status(400).json(err);
+  }
+});
+
+router.put("/:id", async (req, res) => {
+  try{
+      const updatedNote = await Ingredient.update(req.body, {
+          where: {
+              id: req.params.id,
+          },
+      })
+      res.status(200).json(updatedNote);
+  }catch(err){
+    console.log(err);
+      res.status(400).json(err);
+  }
+})
+
 // router.delete("/:id", withAuth, async (req, res) => {
 //   try {
 //     const ingredientData = await Ingredient.destroy({

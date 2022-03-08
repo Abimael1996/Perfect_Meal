@@ -1,11 +1,8 @@
-const addMealBtn = document.querySelectorAll('.add-meal-btn');
 const foodTitleInput = document.querySelector('#food-title');
 const notesInput = document.querySelector('#notes');
-const updateMealtBtn = document.querySelector('.update-meal');
-const createMealBtn = document.querySelector('.create-meal');
+const createMealBtn = document.querySelector('#create-meal');
+const updateMealBtn = document.querySelector('#update-meal');
 const planTitle = document.querySelector('.plan-title');
-const deleteMealBtn = document.querySelectorAll('.delete-meal');
-const mealEl = document.querySelectorAll('.foodName');
 const modalTitleSection = document.querySelector('.title-section');
 const modalNoteSection = document.querySelector('.note-section');
 const closeModalBtn = document.querySelector('.modal-header .close');
@@ -14,39 +11,25 @@ let planId = planTitle.getAttribute('data-planid');
 let mealTime;
 let day;
 let postData = {};
+let cell;
 
-//Keeps button disabled until a Meal title or Ingredient is added.
-addMealBtn.forEach(button => {
-    button.addEventListener('click', (e) => {
-        mealTime = e.target.parentElement.parentElement.getAttribute('data-mealtime');
-        day = e.target.parentElement.getAttribute('data-day');
+foodName.forEach(name => {
+    name.addEventListener('click', (e) => {
+        if (!editMode) {
+            const title = e.target.getAttribute('data-name');
+            const note = e.target.getAttribute('data-note');
+            renderModalInfo(title, note);
+        }
     })
 });
 
-deleteMealBtn.forEach(button => {
-    button.addEventListener('click', (e) => {
-        deleteMeal(e.target.parentElement.getAttribute('data-meal-id'));
-    });
-});
-
+//Keeps button disabled until a Meal title or Ingredient is added.
 foodTitleInput.addEventListener('input', (e) => {
     if (e.target.value != '') {
         createMealBtn.removeAttribute('disabled');
     } else {
         createMealBtn.setAttribute('disabled', '');
     }
-});
-
-closeModalBtn.addEventListener('click', () => {
-    document.location.reload();
-})
-
-mealEl.forEach(meal => {
-    meal.addEventListener('click', (e) => {
-        const title = e.target.getAttribute('data-name');
-        const note = e.target.getAttribute('data-note');
-        renderModal(title, note);
-    })
 });
 
 // Show an element
@@ -56,7 +39,7 @@ const show = (elem) => {
 
 // Hide an element
 const hide = (elem) => {
-    elem.style.display = 'none';
+    elem.classList.add('invisible');
 };
 
 // API interaction
@@ -68,7 +51,10 @@ const getIngredients = () =>
         },
     });
 
-async function addMeal(postData) {
+// This function triggers a chain of post requests
+// Each request but the first one depends on the previous one
+// This chain of requests work perfectly and there is no reason to review them and/or alter it
+async function addMeal(postData, cell) {
     const day = await fetch('/api/days', {
         method: 'POST',
         headers: {
@@ -122,15 +108,54 @@ async function addMeal(postData) {
         body: JSON.stringify(notesData),
     });
 
+    const noteResponse = await note.json();
+
+    // Once the chain is finished, the value of the food title entered in the modal
+    // renders on the cell it belongs to
+    // These names do not come from the database at this point, although they exist there too
+    // Once we switch to Display Mode and then back to Edit Mode, the names will still be there
+    // but this time they WILL come from the database
     if (note.ok) {
-        window.location.reload();
+        const divDay = document.createElement("div");
+        const divMeal = document.createElement("div");
+        const foodName = document.createElement("p");
+        foodName.setAttribute("data-meal-id", mealId);
+        foodName.setAttribute("data-name", foodResponse.name);
+        foodName.setAttribute("data-note", noteResponse.name);
+        foodName.setAttribute("data-toggle", "modal");
+        foodName.setAttribute("data-target", "#modalMeal");
+        foodName.setAttribute("class", "foodName");
+        // Here we create the trash icon for the first time, it should be selected after this point
+        foodName.innerHTML = `${foodTitleInput.value} <span class="delete-meal"><i class="fas fa-trash-alt float-right text-danger"></i></span>`;
+        cell.prepend(divDay);
+        divDay.appendChild(divMeal);
+        divMeal.appendChild(foodName);
+
+        foodName.addEventListener("click", (e) => {
+            const title = e.target.getAttribute('data-name');
+            const note = e.target.getAttribute('data-note');
+            const mealId = e.target.getAttribute("data-meal-id")
+            if (editMode) {
+                renderModal(title, note, mealId);
+            }
+        })
+
+        const deleteMealBtn = document.querySelectorAll('.delete-meal');
+        deleteMealBtn.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                console.log(e.target.parentElement.parentElement.getAttribute("data-meal-id"));
+                deleteMeal(e.target.parentElement.parentElement.getAttribute('data-meal-id'), e.target.parentElement.parentElement);
+            });
+        });
+
     } else {
         new Error('Something went wrong!');
         alert('Something went wrong!');
     }
 }
 
-async function deleteMeal(id) {
+async function deleteMeal(id, foodName) {
     const removeMeal = await fetch(`/api/meals/${id}`, {
         method: 'DELETE',
         headers: {
@@ -139,35 +164,97 @@ async function deleteMeal(id) {
     });
 
     if (removeMeal.ok) {
-        window.location.reload();
+        foodName.remove();
+
     } else {
         new Error('Something went wrong!');
         alert('Something went wrong!');
     }
 }
+
 //Functions
-function renderModal(title, note) {
+function renderModal(title, note, id) {
+    show(updateMealBtn);
     hide(createMealBtn);
-    const titleDiv = document.createElement('div');
+    show(foodTitleInput);
+    show(notesInput);
+    foodLabel.textContent = "Food name";
+    notesLabel.textContent = "Notes";
     const titleEl = document.createElement('p');
     titleEl.textContent = title;
+    modalTitleSection.setAttribute("data-meal-id", id);
 
-    const noteDiv = document.createElement('div');
-    const noteEl = document.createElement('p');
-    noteEl.textContent = note;
-
-    titleDiv.appendChild(titleEl);
-    noteDiv.appendChild(noteEl);
-    modalTitleSection.removeChild(document.querySelector('input'));
-    modalNoteSection.removeChild(document.querySelector('textarea'));
-    modalTitleSection.appendChild(titleDiv);
-    modalNoteSection.appendChild(noteDiv);
+    foodTitleInput.value = title;
+    notesInput.value = note;
 }
 
+updateMealBtn.addEventListener("click", async () => {
+    const id = modalTitleSection.getAttribute("data-meal-id");
+    const foodData = {
+        name: foodTitleInput.value,
+    }
+
+    const mealResponse = await fetch(`/api/meals/${id}`);
+    const foodId = await mealResponse.json();
+
+    const newFood = await fetch(`/api/foods/${foodId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(foodData),
+    });
+
+    const newFoodResponse = await newFood.json();
+
+    const notesData = {
+        name: notesInput.value,
+    };
+
+    const getNoteContent = await fetch(`/api/foods/${foodId}`);
+    const ingredientId = await getNoteContent.json();
+
+    const finalResponse = await fetch(`/api/notes/${ingredientId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(notesData),
+    });
+
+    if (finalResponse.ok) {
+        const foodName = document.querySelectorAll(".foodName");
+        for (const name of foodName) {
+            if (name.getAttribute("data-meal-id") === id) {
+                name.innerHTML = `${foodTitleInput.value} <span class="delete-meal"><i class="fas fa-trash-alt float-right text-danger"></i></span>`;
+                name.setAttribute("data-name", foodTitleInput.value);
+                name.setAttribute("data-note", notesInput.value)
+
+            }
+        }
+        const deleteMealBtn = document.querySelectorAll('.delete-meal');
+
+        deleteMealBtn.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                console.log(e.target.parentElement.parentElement.getAttribute("data-meal-id"));
+                deleteMeal(e.target.parentElement.parentElement.getAttribute('data-meal-id'), e.target.parentElement.parentElement);
+            });
+        })
+    } else {
+        alert("something went wrong")
+    }
+
+})
 // Add a new Meal
+// Inside the modal we click on Create Meal
+// Then we trigger a function that receives the data needed to create a Day
 createMealBtn.addEventListener('click', (e) => {
+    console.log("CLICKEE ESTO");
     postData.plan_id = planId;
     postData.day = day;
 
-    addMeal(postData);
+    addMeal(postData, cell);
 });
+
+

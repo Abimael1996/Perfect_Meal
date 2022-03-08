@@ -1,4 +1,4 @@
-{{#each plan.days as |day|}}
+{{#each meal_plans.[0].days as |day|}}
 <div class="divDay" data-day="{{day.day}}">
     {{#each day.meals as |meal|}}
     <div class="divMeal" data-meal="{{meal.meal_time}}">

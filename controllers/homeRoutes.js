@@ -48,41 +48,8 @@ router.get("/client/:id", withAuth, async (req, res) => {
   try {
     const clientData = await Patient.findByPk(req.params.id, {
       include: [{
-        model: MealPlan
-      }],
-      attributes: {
-        exclude: ["password"],
-      },
-    });
-    const client = clientData.get({ plain: true });
-    
-
-    const clientsData = await Patient.findAll({
-      where: {
-        nutritionist_id: req.session.user_id,
-      }
-    });
-    const clients = clientsData.map((client) => client.get({plain: true}));
-    
-
-    res.render("clientpage", {
-      ...client,
-      clients,
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
-router.get('/client/:id/plan', withAuth, async (req, res) => {
-  try {
-    const planData = await MealPlan.findOne({
-      where: {
-        patient_id: req.params.id,
-      },
-      include: [
-        {
+        model: MealPlan,
+        include: [{
           model: Day,
           include: [{
             model: Meal,
@@ -93,21 +60,30 @@ router.get('/client/:id/plan', withAuth, async (req, res) => {
               }]
             }]
           }]
-        }
-      ]
+        }]
+      }],
+      attributes: {
+        exclude: ["password"],
+      },
     });
-
-    const plan = planData.get({ plain: true });
-
+    const client = clientData.get({ plain: true });
     
-
-    //res.status(200).json(plan);
-    res.render('nutritionplan', {
-      plan,
-      logged_in: req.session.logged_in
+    console.log(client);
+    console.log(client.meal_plans.days);
+    const clientsData = await Patient.findAll({
+      where: {
+        nutritionist_id: req.session.user_id,
+      }
+    });
+    const clients = clientsData.map((client) => client.get({plain: true}));
+    
+    res.render("clientpage", {
+      ...client,
+      clients,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
-    res.status(500).json(err);
+    res.status(400).json(err);
   }
 });
 

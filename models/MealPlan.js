@@ -11,10 +11,6 @@ MealPlan.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
         patient_id: {
             type: DataTypes.INTEGER,
             references: {
